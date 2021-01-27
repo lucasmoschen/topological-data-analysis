@@ -11,6 +11,8 @@ colorlinks=true,linkcolor=blue,urlcolor=blue,citecolor=blue,bookmarks=true,
 bookmarksopenlevel=2]{hyperref}
 \usepackage{enumerate}
 \usepackage{multicol}
+\usepackage{setspace}
+\onehalfspacing
 
 \usepackage{graphicx}
 \usepackage{xcolor}
@@ -27,7 +29,7 @@ bindingoffset=0mm, top=20mm,bottom=20mm}
     {{\thmname{#1 }}{\thmnumber{#2}}{\thmnote{ (#3)}}}
 
 \theoremstyle{mytheor}
-\newtheorem{defi}{Definition}
+\newtheorem{definition}{Definition}
 
 \theoremstyle{mytheor}
 \newtheorem{exercise}{Exercise}
@@ -72,7 +74,7 @@ bindingoffset=0mm, top=20mm,bottom=20mm}
 
 \subsection{Important definitions}
 
-\begin{defi}
+\begin{definition}
     A topological space is a pair $(X, \T)$ where $X$ is a set and $\T$ is a
     collection of subsets of $X$ such that:
     \begin{enumerate}
@@ -81,28 +83,28 @@ bindingoffset=0mm, top=20mm,bottom=20mm}
         \item for every finite collection $\{O_{i}\}_{1 \le i \le n}
         \subset \T$, we have $\bigcap_{1 \le i \le n} O_{i} \in \T$.
     \end{enumerate}   
-\end{defi}
+\end{definition}
 
-\begin{defi}
+\begin{definition}
     Let $x \in \R^n$ and $r > 0$. The open ball of center $x$ and radius $r$,
     denoted $\B(x, r)$, is defined as: $\B(x, r) = \{y \in \R^n, ||x - y|| < r\}$.
-\end{defi}
+\end{definition}
 
-\begin{defi}
+\begin{definition}
     Let $A \subset \R$ and $x \in A$. We say that $A$ is open
     around $x$ if there exists $r > 0$ such that $\B(x, r) \subset A$. We say
     that $A$ is open if for every $x \in A$, $A$ is open around $x$.
-\end{defi}
+\end{definition}
 
-\begin{defi}
+\begin{definition}
     Let $(X, \T)$ be a topological space, and $Y \subset X$. We define the subspace topology on $Y$ as the following set:
     $$T_{|Y} = \{O \cap Y, O \in \T\}$$
-\end{defi}
+\end{definition}
 
-\begin{defi}
+\begin{definition}
     Let $f : X \to Y$ be a map. We say that $f$ is continuous if for every
     $O \in U$, the preimage $f^{-1}(O) = \{x \in X, f(x) \in O\}$ is in $\T$.
-\end{defi}
+\end{definition}
 
 \subsection{Exercises}
 
@@ -111,7 +113,7 @@ bindingoffset=0mm, top=20mm,bottom=20mm}
 \end{exercise}
 
 As we know every Topology contains $\emptyset$ and $\{0,1,2\}$, so we can
-disconsider when writing the topologies, that it, all below contain these
+disconsider when writing the topologies, that is, all below contain these
 subsets. 
 
 \begin{itemize}
@@ -152,13 +154,19 @@ subsets.
 
         \item Let $\{O_{\alpha}\}_{\alpha \in A}\subset \T$. So 
         $^cO = ~^c\left(\bigcup_{\alpha \in A} O_{\alpha}\right) = \bigcap_{\alpha
-        \in A} ~^cO_{\alpha}$. As $^c O \subset ~^cO_{\alpha}$ and
-        $^cO_{\alpha}$ is finite, so is $^c O$. We conclude $O$ is open set. 
+        \in A} ~^cO_{\alpha} \implies ^c O \subset ~^cO_{\alpha}, \forall
+        \alpha \in A$. If $\forall \alpha, O_{\alpha} = \emptyset$, then $^cO =
+        ~^c\emptyset \implies O = \emptyset$   and $O$ is open. On the other
+        hand, if there exists $\alpha \in A$ such that $O_{\alpha} \neq
+        \emptyset$ we have $^c O_{\alpha}$ being finite, so is $^c O$, given
+        the inclusion. We conclude $O$ is open set. 
         
         \item Let $\{O_{i}\}_{1 \le i \le n} \subset \T$. So 
         $^cO = ~^c\left(\bigcap_{1 \le i \le n} O_i\right) = \bigcup_{1 \le i
-        \le n} ~^cO_i$, where $^cO_i$ if finite. A finite union of finite sets
-        is finite, so $O$ is an open set. 
+        \le n} ~^cO_i$. If $O_i = \emptyset$ for some $1 \le i \le n$, $O =
+        \emptyset$ because of the intersection. Alternatively, if $\forall i,
+        O_i \neq \emptyset$ we have that $^cO_i$ is finite and a finite union
+        of finites is finite. We conclude that $O$ is open set.
     \end{enumerate}
     By (a), (b) and (c), $\T$ is a topology on $\Z$. 
 
@@ -170,7 +178,7 @@ subsets.
     $$^c\left(\bigcap_{n \in \mathbb{N}} O_n\right) = \bigcup_{n \in
     \mathbb{N}} ~^cO_n = \bigcup_{n \in
     \mathbb{N}} \{1,...,n\} = \mathbb{N},$$
-    que não é finito. Portanto a intersecção não é conjunto aberto.     
+    that is not finite. Therefore, this intersection is not an open set.     
     
 \end{enumerate}
 
