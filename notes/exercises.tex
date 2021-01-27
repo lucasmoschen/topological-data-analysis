@@ -29,10 +29,10 @@ bindingoffset=0mm, top=20mm,bottom=20mm}
     {{\thmname{#1 }}{\thmnumber{#2}}{\thmnote{ (#3)}}}
 
 \theoremstyle{mytheor}
-\newtheorem{definition}{Definition}
+\newtheorem{definition}{Definition}[subsection]
 
 \theoremstyle{mytheor}
-\newtheorem{exercise}{Exercise}
+\newtheorem{exercise}{Exercise}[subsection]
 
 \theoremstyle{remark}
 \newtheorem*{remark}{Remark}
@@ -298,6 +298,18 @@ continuity of $f$.
 \section{Homeomorphisms}
 
 \subsection{Important definitions}
+
+\begin{definition}
+    Let $(X, \T)$ and $(Y, \mathcal{U})$ be two topological spaces, and $f : X
+    \to Y$ a map. We say that $f$ is a homeomorphism if
+    \begin{enumerate}
+        \item $f$ is a bijection, 
+        \item $f : X \to Y$ is continuos, 
+        \item $f^{-1} : Y \to X$ is continuos.
+    \end{enumerate}
+    If there exists such a homeomorphism, we say that the two topological
+    spaces are homeomorphic.
+\end{definition}
 
 \subsection{Exercises}
 
