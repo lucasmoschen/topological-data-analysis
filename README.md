@@ -8,6 +8,8 @@ Course website: [https://raphaeltinarrage.github.io/EMAp.html](https://raphaelti
 
 Course notes: [SummerCourseTDA](https://raphaeltinarrage.github.io/files/EMAp/SummerCourseTDA.pdf)
 
+Exercises and main definitions: [notes](https://github.com/lucasmoschen/topological-data-analysis/blob/main/notes/exercises.pdf)
+
 Abstract
 ---
 
