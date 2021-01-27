@@ -13,5 +13,11 @@ Exercises and main definitions: [notes](https://github.com/lucasmoschen/topologi
 Abstract
 ---
 
-This is a topic from applied mathematics with the objective of analyze datasets using techiniques from topology. This framework is insensitive to a particular metric and provides dimensionality reduction and robustness to noise. In this course, we aim to understand the basic topologic concepts as topological space and apply it using Python. 
+This is a topic from applied mathematics with the objective of analyze
+datasets using techniques from topology. This framework is insensitive to a
+particular metric and provides dimensionality reduction and robustness to
+noise. In this course, we aim to understand the basic topological concepts as
+topological space and apply it using Python. 
+
+The tutorials are written by the professor. 
 
