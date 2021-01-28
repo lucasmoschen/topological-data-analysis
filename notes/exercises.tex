@@ -32,7 +32,7 @@ bindingoffset=0mm, top=20mm,bottom=20mm}
 \newtheorem{definition}{Definition}[subsection]
 
 \theoremstyle{mytheor}
-\newtheorem{exercise}{Exercise}[subsection]
+\newtheorem{exercise}{Exercise}
 
 \theoremstyle{remark}
 \newtheorem*{remark}{Remark}
@@ -210,7 +210,7 @@ In that sense, $z \in \B(x,r)$ and $\B(y, r - ||x - y||) \subset \B(x,r)$.
     $$
 \end{exercise}
 
-Define $m = \dfrac{x+y}{2}$. Take $z \in \B\left(m, \dfrac{r}{2}\right)$.
+Denote $m = \dfrac{x+y}{2}$. Take $z \in \B\left(m, \dfrac{r}{2}\right)$.
 Thus, using the triangular inequality,
 
 $$||x - z|| \le ||x - m|| + ||m - z|| = \frac{1}{2}||x - y|| + ||m - z|| < r/2
@@ -311,7 +311,239 @@ continuity of $f$.
     spaces are homeomorphic.
 \end{definition}
 
+\begin{definition}
+    Let $(X, \T)$ be a topological space. We say that $X$ is connected if for
+    every open sets $O, O' \in \T$ such that $O \cap O' = \emptyset$ (i.e.,
+    they are disjoint), we have
+    $$X = O \cup O' \implies O = \emptyset \text{ or } O' = \emptyset.$$
+\end{definition}
+
+\begin{definition}
+    Let $(X, \T)$ be a topological space. Suppose that there exists a
+    collection of $n$ \textbf{non-empty}, \textbf{disjoint} and
+    \textbf{connected open sets} $(O_1, ..., O_n)$ such that
+    $$
+    \bigcup_{1 \le i \le n} O_i = X.
+    $$
+    Then we say that $X$ admits $n$ connected components.
+\end{definition}
+
+\begin{definition}
+    Let ($X, \T)$ be a topological space, and $n \geq 0$. We say that it has
+    dimension $n$ if the following is true: for every $x \in X$, there exists
+    an open set $O$ such that $x \in O$, and a homeomorphism $O \to \R^n$.
+\end{definition}
+
 \subsection{Exercises}
+
+\begin{exercise}
+    Show that the topological spaces $\R^n$ and $\B(0, 1) \subset \R^n$ are homeomorphic.
+\end{exercise}
+
+Let $f: \B(0,1) \to \R^n$ be defined as $f(x) = \dfrac{x}{1 - ||x||}$. I
+observe it's well defined because $||x|| < 1$. We shall prove $f$ is a
+homeomorphism. 
+\begin{enumerate}
+    \item \textbf{Injective:} Take $x, y \in \B(0,1)$ and suppose that  
+    $$
+    \frac{x}{1 - ||x||} = \frac{y}{1 - ||y||}. 
+    $$
+    Applying the norm in both sides, we obtain the equation 
+    $$||x||(1 - ||y|||) = ||y||(1 - ||x||) \implies ||x|| = ||y||.$$
+    On the other side $x$ and $y$ points to the same direction, given that 
+    $$
+    y = \frac{1 - ||y||}{1 - ||x||}x = \alpha x, 
+    $$
+    with $\alpha = 1$ because of the same norm. We conclude $x = y$. 
+
+    \item \textbf{Surjective:} Take $y \in \R^n$. We shall prove that there
+    exists $x \in \B(0,1)$ such that $f(x) = y$, that is, 
+    $$
+    \frac{x}{1 - ||x||} = y
+    $$
+    Applying the norm we observe that if that is true, $||x|| = ||y|| -
+    ||y||||x|| \implies ||x|| = \frac{||y||}{1 + ||y||}$. And $x = (1 -
+    ||x||)y = \frac{1}{1 + ||y||}y$. We conclude that for every $y \in \R^n$,
+    if we take $x = \frac{y}{1 + ||y||}$,
+    $$
+    f(x) = \frac{y/(1 + ||y||)}{1 - ||y||/(1 + ||y||)} = y
+    $$
+
+    \item \textbf{Continuity of f:} Consider an open set $A \subset \R^n$. Let
+    $B = f^{-1}(A)$. We shall prove $B$ is open, that is, for every $x \in B$,
+    exists $r > 0$ such that $\B(x, r) \subset B$. Take $x = f^{-1}(y) \in B$.
+    Because $A$ is open, there is $\epsilon > 0$ such that $\B(y, \epsilon)
+    \subset A$. Take $\delta$ such that 
+    $$
+    \frac{\delta}{1 - ||x|| - \delta}(1 + ||y||) < \epsilon
+    $$
+    and $z = f^{-1}(w) \in \B(x,\delta)$. 
+    \begin{equation*}
+        \begin{split}
+            ||y - w|| &= \left|\left|\frac{x}{1 - ||x||} - \frac{z}{1 - ||z||}\right|\right| = \frac{1}{1 - ||x||}\left|\left|x - \frac{1 - ||x||}{1 - ||z||}z\right|\right| \\ 
+            &= \frac{1}{1 - ||x||}\left|\left|x - z + z - \frac{1 - ||x||}{1 - ||z||}z\right|\right| \\
+            &\le \frac{||x-z||}{1 - ||x||} + \frac{1}{1 - ||x||}\left(1 - \frac{1 - ||x||}{1 - ||z||}||z||\right) \\
+            &= \frac{||x-z||}{1 - ||x||} + \frac{||z||}{1 - ||x||}\frac{||x|| - ||z||}{1 - ||z||} \\
+            &\le \frac{1}{1 - ||x||}||x-z||(1 + ||w||) \\
+            &\le \frac{1}{1 - ||x||}||x-z||(1 + ||y - w|| + ||y||) \\
+            \implies ||y - w|| &\le \frac{||x-z||}{1 - ||x|| - ||x-z||}(1 + ||y||) \\ 
+            &< \frac{\delta}{1 - ||x|| - \delta}(1 + ||y||) < \epsilon
+        \end{split}
+    \end{equation*}
+    So $w \in \B(y, \epsilon) \subset A \implies z \in B$, what proves $B$ is
+    open. It concludes the continuity of $f$. 
+
+    \item \textbf{Continuity of $f^{-1}$: } The inverse is given by 
+    $$
+    f^{-1}(y) = \frac{y}{1 + ||y||}
+    $$
+    The demonstration is quite similar to the previous item, given that the
+    only difference is the signal. 
+\end{enumerate}
+
+By items (1) - (4), we conclude $f$ is a homeomorphism and $\B(0,1) \simeq
+\R^n$. 
+
+\noindent\linia
+
+\begin{exercise}
+    Show that $\B(x, r)$ and $\B(y, s)$ are homeomorphic.
+\end{exercise}
+
+Consider the function $f: \B(0, 1) \to \B(c, r)$ given by $f(x) = r\cdot x + c$. Let's
+prove $f$ is a homeomorphism. 
+\begin{enumerate}
+    \item \textbf{Injective:} If $x,y \in \B(0,1)$ and $rx + c = ry + c
+    \implies x = y$, because $r > 0$ by 
+    definition. So $f$ is injective. 
+    
+    \item \textbf{Surjective:}  Let $y \in \B(c, r)$ and $x = (y - c)/r$. So
+    $||x|| = ||y - c||/r < 1$, by definition. So $x \in \B(0,1)$ and $f(x) =
+    y$ what proves this function is surjective. 
+
+    \item \textbf{Continuity of f:} Let $A \subset \B(c,r)$ open set and
+    denote $B = f^{-1}(A)$. Take $x = f^{-1}(y) \in B$. We know there exists
+    $\epsilon > 0$ such that $\B(y, \epsilon) \subset A$. Define $\delta = \epsilon/r$ and
+    take $z = f^{-1}(w) \in \B(x,\delta)$. 
+    $$
+    ||y-w|| = ||rx + c - (rz + c)|| = r||x - z|| < r\delta = \epsilon 
+    $$
+    Therefore $w \in \B(y, \epsilon) \subset A \implies z \in B$. So
+    $\B(x,\delta) \subset B$, what proves $B$ is open. This concludes the
+    continuity of $f$. 
+    
+    \item \textbf{Continuity of $f^{-1}$:} The inverse is given by 
+    $$
+    f^{-1}(y) = \frac{y - c}{r}
+    $$
+    This function is continuos for the same argument as before. 
+\end{enumerate}
+
+By items (1) - (4), we conclude $f$ is a homeomorphism and $\B(0,1) \simeq
+\B(c,r)$. Since this is a equivalence relation, we have that
+$$
+\B(0,1) \simeq \B(x,r) \text{ and } \B(0,1) \simeq \B(y, s) \text{ implies } \B(x,r) \simeq \B(y,s).
+$$
+
+\noindent\linia
+
+\begin{exercise}
+    Show that $\mathbb{S}(0, 1)$, the unit circle of $\R^2$, is homeomorphic
+    to the ellipse 
+    $$
+    \mathcal{S}(a,b) = \left\{(x,y) \in \R^2,\left(\frac{x}{a}\right)^2 + \left(\frac{y}{b}\right)^2 = 1 \right\},
+    $$
+    for any $a, b > 0$. 
+\end{exercise}
+
+Consider the function $f : \mathbb{S}(0,1) \to \mathcal{S}(a,b)$ such that
+$f(x,y) = (ax, by)$. Let's prove it is a homeomorphism. 
+
+\begin{enumerate}
+    \item \textbf{Injective:} Let $(x_1, y_1), (x_2, y_2) \in \mathbb{S}(0,1)$
+    such that $(ax_1, by_1) = (ax_2, by_2)$. Since $a, b > 0$, we have $x_1 =
+    x_2$ and $y_1 = y_2$. It proves $f$ is injective. 
+
+    \item \textbf{Surjective:} Let $(z,w) \in \mathcal{S}(a,b)$ and $(x,y) =
+    \left(\dfrac{z}{a}, \dfrac{w}{b}\right)$. It's clear that $f(x,y) = (z,w)$
+    and $x^2 + y^2 = \frac{z^2}{a^2} + \frac{w^2}{b^2} = 1$, so $(x,y) \in
+    \mathbb{S}(0,1)$. It proves $f$ is surjective. 
+    
+    \item \textbf{Continuity of f:} Let $A \subset \mathcal{S}(a,b)$ open set and denote
+    $B = f^{-1}(A)$. Take $(x,y) = f^{-1}(z,w) \in B$. We know there exists
+    $\epsilon > 0$ such that $\B((z,w), \epsilon) \subset A$. Put $\delta$ as
+    defined below and 
+    take $(x', y') = f^{-1}((z', w')) \in \B((x,y),\delta)$. Consider the norm
+    1
+    \begin{equation*}
+        \begin{split}
+            ||(z',w')-(z,w)||_1 &= ||(ax', by') - (ax, by)||_1 = ||\left(a(x' - x), b(y' - y)\right)||_1 \\ 
+            &= a|x' - x| + b|y' - y|, \text{ define } c = \max\{a,b\}\\        
+            &\le c(|x' - x| + |y' - y|) = c||(x' - x, y' - y)||_1
+        \end{split}
+    \end{equation*}
+
+    By the equivalente of the norms, there exists constants $k_1, k_2$ such that 
+    $$
+    ||(z',w')-(z,w)|| \le k_1||(z',w')-(z,w)||_1 \le ck_1||(x' - x, y' - y)||_1 \le ck_1k_2||(x' - x, y' - y)|| 
+    $$
+    Then we need $\delta = \frac{\epsilon}{c k_1 k_2}$ in order to prove that
+    $(z',w') \in \B((z,w), \epsilon) \subset A \implies (x',y') \in B$. So
+    $\B((x,y),\delta) \subset B$, what proves $B$ is open. This concludes the
+    continuity of $f$. 
+
+    \item \textbf{Continuity of $f^{-1}$:} The inverse is given by 
+    $$
+    f^{-1}((z,w)) = (z/a, w/b)
+    $$
+    This function is continuos for the same argument as before. 
+\end{enumerate}
+
+By items (1) - (4), we conclude $f$ is a homeomorphism and $\mathbb{S}(0,1) \simeq
+\mathcal{S}(a,b)$.
+
+\noindent\linia
+
+\begin{exercise}
+    Show that $[0, 1)$ and $(0, 1)$ are not homeomorphic.
+\end{exercise}
+
+We shall prove by contradiction. Suppose these exists a homeomorphism $f :
+[0,1) \to (0,1)$. Let $0 < z = f(0) < 1$ and define the following function
+\begin{align*}
+    g : (0,1) &\to (0,z) \cup (z,1) \\
+    x &\mapsto g(x) = f(x)
+\end{align*}
+
+This function is well defined given that $z$ is not image of other point but
+$0$. The function is injective because if $g(y) = g(x) \implies f(y) = f(x)
+\implies x = y$, given that $f$ is injective. This function is also surjective
+since $f$ is and $0 < w < 1$ and $w \neq z$, it's clear that $f(0) \neq w$. As
+$g$ is an induced map of a continuos function, by Proposition 1.21 from the
+notes, it's continuos and so is its inverse. We conclude $g$ is a
+homeomorphism. 
+
+Now I will prove that $(0,1)$ admits only 1 connected component, that is, it's
+connected. Suppose it's not and there exists $O, O' \subset (0,1)$ open
+disjoint sets such that $(0,1) = O \cup O'$ and none of them are
+empty sets. Let $a \in O, b \in O'$ with $a < b$ without loss of generality.
+Define $\alpha = \sup\{x \in \R : [a,x) \subset O\}$. It's well
+defined because this set is not empty, given $O$ is open and $b$ is an upper
+bound. Then $\alpha \leq b$. Suppose $\alpha \in O'$, then there exists $r >
+0$ such that $(\alpha - r,\alpha + r) \subset O'$. We know that for every
+$\epsilon > 0$, there exists $w \in (\alpha - \epsilon, \alpha]$ such that
+$[a, w) \subset O$. That is a contradiction since there exists $w \in (\alpha
+- r, \alpha)$ such that $[a, w) \subset O$. So $\alpha \in O \implies (\alpha
+- r, \alpha + r) \subset O$, for some $r$. We infer that $[a,\alpha + r) \subset
+O$, what is an absurd. Therefore $(0,1)$ is connected. 
+
+For a similar argument, we prove that $(0,z)$ and $(z,1)$ are connected. This
+implies that the union admits 2 connected components.
+
+In that sense, we have a homeomorphism between a topological space with 1
+connected component and other with 2 connected components, what is a
+contradiction by Proposition 2.14 from the notes. We conclude that $[0,1)$ and
+$(0,1)$ are not homeomorphic.
 
 \end{document}
 
