@@ -38,6 +38,7 @@ bindingoffset=0mm, top=20mm,bottom=20mm}
 \newtheorem*{remark}{Remark}
 
 \newcommand{\T}{\mathcal{T}}
+\newcommand{\U}{\mathcal{U}}
 \newcommand{\B}{\mathcal{B}}
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\R}{\mathbb{R}}
@@ -300,7 +301,7 @@ continuity of $f$.
 \subsection{Important definitions}
 
 \begin{definition}
-    Let $(X, \T)$ and $(Y, \mathcal{U})$ be two topological spaces, and $f : X
+    Let $(X, \T)$ and $(Y, \U)$ be two topological spaces, and $f : X
     \to Y$ a map. We say that $f$ is a homeomorphism if
     \begin{enumerate}
         \item $f$ is a bijection, 
@@ -545,10 +546,73 @@ connected component and other with 2 connected components, what is a
 contradiction by Proposition 2.14 from the notes. We conclude that $[0,1)$ and
 $(0,1)$ are not homeomorphic.
 
-\end{document}
-
 \section{Homotopies}
 
 \subsection{Important definitions}
 
+\begin{definition}
+    Let $(X, \T)$ and $(Y, \U)$ be two topological spaces, and $f, g : X \to Y$
+    two continuous maps. A homotopy between $f$ and $g$ is a map $F : X \times
+    [0, 1] \to Y$ such that:
+    \begin{enumerate}
+        \item $F(\cdot, 0)$ is equal to $f$, 
+        \item $F(\cdot, 1)$ is equal to $g$, 
+        \item $F : X \times [0, 1] \to Y$ is continuous.
+    \end{enumerate}
+    If such a homotopy exists, we say that the maps f and g are homotopic.
+\end{definition}
+ 
+\begin{definition}
+    Let $(X, \T)$ and $(Y, \U)$ be two topological spaces. A homotopy
+    equivalence between $X$ and $Y$ is a pair of continuous maps $f : X \to Y$
+    and $g : Y \to X$ such that:
+    \begin{enumerate}
+        \item $g \circ f : X \to X$ is homotopic to the identity map $id: X \to X$,
+        \item $f \circ g : Y \to Y$ is homotopic to the identity map $id: Y \to Y$,
+    \end{enumerate}
+    If such a homotopy equivalence exists, we say that $X$ and $Y$ are homotopy equivalent.   
+\end{definition}
+
+\begin{definition}
+    Let $(X, \T)$ be a topological space and $Y \subset X$ a subset, endowed
+    with the subspace topology $T_{|Y}$. A retraction is a continuous map $r :
+    X \to Y$ such that $\forall y \in Y, r(y) = y$. 
+    
+    A deformation retraction is a homotopy $F : X \times [0, 1] \to Y$ between
+    the identity map $id: X \to X$ and a retraction $r : X \to Y$.
+\end{definition}
+
 \subsection{Exercises}
+
+\begin{exercise}
+    Let $f : \R^n \to X$ be a continuous map. Then $f$ is homotopic to a constant map.
+\end{exercise}
+
+\noindent\linia
+
+\begin{exercise}
+    Show that every map $f : \mathbb{S}_1 \to \mathbb{S}_2$ is homotopic to a constant map.
+\end{exercise}
+
+\noindent\linia
+
+\begin{exercise}
+    Show that being homotopic is a transitive relation between maps: for every
+    triplet of maps $f, g, h: X \to Y$, if $f$, $g$ are homotopic and $g$, $h$
+    are homotopic, then $f$, $h$ are homotopic.
+\end{exercise}
+
+\noindent\linia
+
+\begin{exercise}
+    Show that being homotopy equivalent is an equivalence relation (reflexive,
+    symmetric and transitive).
+\end{exercise}
+
+\noindent\linia
+
+\begin{exercise}
+    Classify the letters of the alphabet into homotopy equivalence classes.
+\end{exercise}
+
+\end{document}
