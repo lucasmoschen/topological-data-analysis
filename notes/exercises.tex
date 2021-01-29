@@ -464,7 +464,7 @@ prove $f$ is a homeomorphism.
 \end{enumerate}
 
 By items (1) - (4), we conclude $f$ is a homeomorphism and $\B(0,1) \simeq
-\B(c,r)$. Since this is a equivalence relation, we have that
+\B(c,r)$. Since this is an equivalence relation, we have that
 $$
 \B(0,1) \simeq \B(x,r) \text{ and } \B(0,1) \simeq \B(y, s) \text{ implies } \B(x,r) \simeq \B(y,s).
 $$
@@ -660,14 +660,51 @@ function.
 \noindent\linia
 
 \begin{exercise}
-    Show that every map $f : \mathbb{S}_1 \to \mathbb{S}_2$ is homotopic to a
-    constant map, where the unit sphere $\mathbb{S}_{n-1} = \{x \in \R^n,
+    Let $f : \mathbb{S}_1 \to \mathbb{S}_2$ be a continuous map which is not
+    surjective. Prove that it is homotopic to a constant map where the unit sphere $\mathbb{S}_{n-1} = \{x \in \R^n,
     ||x|| = 1\}$. 
 \end{exercise}
 
+Let $x_0 \in \mathbb{S}_2$ such that $x_0 \not\in f(\mathbb{S}_1)$ and
+consider the constant map $g(x) = -x_0$, for every $x \in \mathbb{S}_1$. Let
+$F: \mathbb{S}_1 \times [0,1] \to \mathbb{S}_2$ be defined as 
+$$
+F(x,t) = 2\frac{(1 - t)f(x) - tx_0}{||(1 - t)f(x) - tx_0||}
+$$
+
+The first thing we must prove it's well defined. Suppose that $(1 - t)f(x) -
+tx_0 = 0$. If $t = 1$, then $x_0 = 0$, an absurd given that $||x_0|| = 2$. If
+$t < 1, f(x) = \frac{t}{1-t}x_0$ and applying the norm on both sides $2 =
+||f(x)|| = \frac{t}{1-t}||x_0|| = 2\frac{t}{1-t} \implies t = 1/2$. If that is
+the case, $f(x) - x_0 = 0 \implies f(x) = x_0$, contradiction. Moreover, for
+all $x$ and $t, ||F(x,t)|| = 2 \implies F(\mathbb{S}_1, [0,1]) \subset
+\mathbb{S}_2$. 
+
+Now let's prove it's a homotopy:
+
+\begin{enumerate}
+    \item $F(x,0) = 2\frac{f(x)}{||f(x)||} = f(x), \forall x \in
+    \mathbb{S}_1$. 
+
+    \item $F(x,1) = 2\frac{-x_0}{||x_0||} = - x_0, \forall x \in
+    \mathbb{S}_1$. 
+
+    \item Consider the extension of the function $F' : \mathbb{S}_1 \times
+    [0,1] \to \R^3$. This function is continuous because it's a combination os
+    continuos function. So $F$ is continuos because it's a restriction of
+    $F'$. I needed to extend the function because $(1-t)f(x)$ is not necessary
+    in the sphere, so I couldn't prove it's continuos. However, when extended
+    we see each part is continuos. 
+\end{enumerate}
+
+By (1) - (3), we have proved $F$ is a homotopy and $f$ are homotopic to a
+constant function. 
+
 \begin{remark}
-    I will suppose $f$ is continuous, otherwise I think it's not possible to
-    prove there is a homotopy.     
+    If the functions is surjective, it's harder to prove, and I couldn't yet.
+    For instance, this is a
+    reference\footnote{\url{https://math.stackexchange.com/questions/3807715/}
+    } (but the answers use specialized tools) 
 \end{remark}
 
 \noindent\linia
@@ -751,10 +788,9 @@ continuos and, therefore, $f$ and $h$ are homotopic.
     \end{enumerate}
 
     By the points above $f_3$ and $g_3$ is a homotopy equivalence what proves
-    $X \approx Z$.    
+    $X \approx Z$.  Consequently, homotopy equivalence is an equivalence relation.
+  
 \end{enumerate}
-
-Consequently, homotopy equivalence is a equivalence relation.
 
 \noindent\linia
 
