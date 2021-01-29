@@ -261,10 +261,32 @@ sets open? Are they closed?
     x)\cup(x,\infty)$ is union of open sets. 
     
     \item $\mathbb{Q}$. It's not open because for every open ball around a
-    rational, there is irrationals, that is, for $x \in \mathbb{Q}$ and
-    $\forall \epsilon > 0$, exists $y \in (\R - \mathbb{Q}) \cap
+    rational, there are irrationals, that is, let $x \in \mathbb{Q}$ and take
+    $\epsilon > 0$, then there exists $y \in (\R - \mathbb{Q}) \cap
     \B(x,\epsilon)$. It's not closed for the same reason, for every
     irrational, there is rationals for every open ball. 
+
+    \begin{remark}
+        We shall prove the rationals are dense in the reals. Let $x \in
+        \mathbb{Q}$ and $\epsilon > 0$. If $\epsilon$ is irrational, take $x-
+        \epsilon/2 \subset (x - \epsilon, x + \epsilon)$. Suppose $x -
+        \epsilon/2$ is rational, then $\frac{2x - \epsilon}{2} = \frac{m}{n}$
+        for some integers $m$ and $n$, that is, $2x - \epsilon = 2m/n$ and
+        $\epsilon = 2(x - \frac{m}{n}) \in \mathbb{Q}$, contradiction. So there
+        is an irrational in $\B(x, \epsilon)$. If $\epsilon$ is rational,
+        consider 
+        $$y = \frac{1}{\sqrt{2}}(x - \epsilon) + (1 -
+        \frac{1}{\sqrt{2}})(x + \epsilon) = (x + \epsilon) - \epsilon\sqrt{2}$$ 
+        That is a convex combination, so
+        $y \in \B(x, \epsilon)$. Moreover, $y$ is irrational, with a similar
+        proof by contradiction. This proves the statement. 
+
+        On the other hand, we must prove for every two irrationals $(a,b)$,
+        there is a rational between them. Denote $c = b - a > 0$. Let $n\in
+        \mathbb{N}$ such that $n > \frac{1}{c} \implies cn > 1 \implies (bn -
+        an) > 1$. So exists $m \in (an, bn) \implies m/n \in (a,b)$. This
+        proves the second statement.   
+    \end{remark}
 \end{enumerate}
 
 \noindent\linia
@@ -457,7 +479,7 @@ $$
     for any $a, b > 0$. 
 \end{exercise}
 
-Consider the function $f : \mathbb{S}(0,1) \to \mathcal{S}(a,b)$ such that
+Consider the function $f : \mathbb{S}(0,1) \to \mathcal{S}(a,b)$ defined as
 $f(x,y) = (ax, by)$. Let's prove it is a homeomorphism. 
 
 \begin{enumerate}
