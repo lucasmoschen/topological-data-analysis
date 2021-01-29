@@ -1,0 +1,243 @@
+\subsection{Important definitions}
+
+\begin{definition}
+    A topological space is a pair $(X, \T)$ where $X$ is a set and $\T$ is a
+    collection of subsets of $X$ such that:
+    \begin{enumerate}
+        \item $\emptyset \in \T, X \in \T$. 
+        \item for every infinite collection $\{O_{\alpha}\}_{\alpha \in A}\subset \T$, we have $\bigcup_{\alpha \in A} O_{\alpha} \in \T$.
+        \item for every finite collection $\{O_{i}\}_{1 \le i \le n}
+        \subset \T$, we have $\bigcap_{1 \le i \le n} O_{i} \in \T$.
+    \end{enumerate}   
+\end{definition}
+
+\begin{definition}
+    Let $x \in \R^n$ and $r > 0$. The open ball of center $x$ and radius $r$,
+    denoted $\B(x, r)$, is defined as: $\B(x, r) = \{y \in \R^n, ||x - y|| < r\}$.
+\end{definition}
+
+\begin{definition}
+    Let $A \subset \R$ and $x \in A$. We say that $A$ is open
+    around $x$ if there exists $r > 0$ such that $\B(x, r) \subset A$. We say
+    that $A$ is open if for every $x \in A$, $A$ is open around $x$.
+\end{definition}
+
+\begin{definition}
+    Let $(X, \T)$ be a topological space, and $Y \subset X$. We define the subspace topology on $Y$ as the following set:
+    $$T_{|Y} = \{O \cap Y, O \in \T\}$$
+\end{definition}
+
+\begin{definition}
+    Let $f : X \to Y$ be a map. We say that $f$ is continuous if for every
+    $O \in U$, the preimage $f^{-1}(O) = \{x \in X, f(x) \in O\}$ is in $\T$.
+\end{definition}
+
+\subsection{Exercises}
+
+\begin{exercise}
+    Let $X = \{0, 1, 2\}$ be a set with three elements. What are the  different topologies that X admits?
+\end{exercise}
+
+As we know every Topology contains $\emptyset$ and $\{0,1,2\}$, so we can
+disconsider when writing the topologies, that is, all below contain these
+subsets. 
+
+\begin{itemize}
+    \item (2) Basic: $\{\emptyset, \{0,1,2\}\}$ - $\mathcal{P}(\{0,1,2\})$.  
+    \item (8) With $\{0\}$: $\{\{0\}\} - \{\{0\}, \{0,1\}\} - \{\{0\}, \{1,2\}\} -
+    \{\{0\}, \{0,2\}\} - \{\{0\}, \{0,2\}, \{0,1\}\}$ \\ 
+    $\{\{0\}, \{2\}, \{0,2\}\}- \{\{0\}, \{2\}, \{0,2\}, \{1,2\}\} -
+    \{\{0\}, \{2\}, \{0,2\}, \{0,1\}\}$
+
+    \item (8) With $\{1\}$: $\{\{1\}\} - \{\{1\}, \{0,1\}\} - \{\{1\}, \{1,2\}\} -
+    \{\{1\}, \{0,2\}\} - \{\{1\}, \{1,2\}, \{0,1\}\}$ \\
+    $\{\{0\}, \{1\}, \{0,1\}\} - \{\{0\}, \{1\}, \{0,1\}, \{1,2\}\} -  \{\{0\}, \{1\}, \{0,1\}, \{0,2\}\}$
+
+    \item (8) With $\{2\}$: $\{\{2\}\} - \{\{2\}, \{0,1\}\} - \{\{2\}, \{1,2\}\} -
+    \{\{2\}, \{0,2\}\} - \{\{2\}, \{0,2\}, \{1,2\}\}$ \\
+    $\{\{1\}, \{2\}, \{1,2\}\} - \{\{1\}, \{2\}, \{1,2\}, \{0,1\}\} - \{\{1\},
+    \{2\}, \{1,2\}, \{0,2\}\}$ 
+    
+    \item (3) No singleton: $\{\{0,1\}\} - \{\{1,2\}\} - \{\{0,2\}\} $
+\end{itemize}
+
+\noindent\linia
+
+\begin{exercise}
+    Let $\Z$ be the set of integers. Consider the \textit{cofinite
+    topology} $\T$ on $\Z$, defined as follows: a subset $O \subset
+    \Z$ is an open set if and only if $O = \emptyset$ or $^c O$ is finite. Here, $^cO = \{x \in \Z, x \not\in O\}$ represents the complementary of $O$ in $\Z$
+\end{exercise}
+
+\begin{enumerate}
+    \item Show that $\T$ is a topology on $\Z$.
+
+    Let's verify the three axioms: 
+
+    \begin{enumerate}
+        \item $\emptyset$ is an open set by definition and $\Z$ is open set
+        because $^c\Z = \emptyset$ is finite. 
+
+        \item Let $\{O_{\alpha}\}_{\alpha \in A}\subset \T$. So 
+        $^cO = ~^c\left(\bigcup_{\alpha \in A} O_{\alpha}\right) = \bigcap_{\alpha
+        \in A} ~^cO_{\alpha} \implies ^c O \subset ~^cO_{\alpha}, \forall
+        \alpha \in A$. If $\forall \alpha, O_{\alpha} = \emptyset$, then $^cO =
+        ~^c\emptyset \implies O = \emptyset$   and $O$ is open. On the other
+        hand, if there exists $\alpha \in A$ such that $O_{\alpha} \neq
+        \emptyset$ we have $^c O_{\alpha}$ being finite, so is $^c O$, given
+        the inclusion. We conclude $O$ is open set. 
+        
+        \item Let $\{O_{i}\}_{1 \le i \le n} \subset \T$. So 
+        $^cO = ~^c\left(\bigcap_{1 \le i \le n} O_i\right) = \bigcup_{1 \le i
+        \le n} ~^cO_i$. If $O_i = \emptyset$ for some $1 \le i \le n$, $O =
+        \emptyset$ because of the intersection. Alternatively, if $\forall i,
+        O_i \neq \emptyset$ we have that $^cO_i$ is finite and a finite union
+        of finites is finite. We conclude that $O$ is open set.
+    \end{enumerate}
+    By (a), (b) and (c), $\T$ is a topology on $\Z$. 
+
+    \item Exhibit an sequence of open sets $\{O_n\}_{n\in\mathbb{N}} \subset
+    \T$ such that $\bigcap_{n \in \mathbb{N}} O_n$ is not an open
+    set.
+
+    Let $O_n = ~^c\{1, ..., n\}$. Thus $^c O_n = \{1,...,n\}$ is finite and
+    $$^c\left(\bigcap_{n \in \mathbb{N}} O_n\right) = \bigcup_{n \in
+    \mathbb{N}} ~^cO_n = \bigcup_{n \in
+    \mathbb{N}} \{1,...,n\} = \mathbb{N},$$
+    that is not finite. Therefore, this intersection is not an open set.     
+    
+\end{enumerate}
+
+\noindent\linia
+
+\begin{exercise}
+    Let $x \in \R^n$, and $r > 0$. Let $y \in \B(x, r)$. Show that
+    $$\B(y,r - ||x-y||) \subset \B(x,r)$$
+\end{exercise}
+
+Let $z \in \B(y, r - ||x-y||)$, so $||z - y|| < r - ||x - y|| \implies ||z-y||
++ ||x-y|| < r$. We can conclude
+that, by the triangular inequality,  
+$$||x - z|| \le ||x - y|| + ||z - y|| < r.$$ 
+In that sense, $z \in \B(x,r)$ and $\B(y, r - ||x - y||) \subset \B(x,r)$.
+
+\begin{remark}
+    In the notes, the exercise is to prove $\B(y,||x-y||) \subset \B(x,r)$,
+    however, this does not hold, because if we take $y$ next the border of
+    $\B(x,r), ||x - y|| \approx r$ and $B(y,r -\epsilon) \not \subset B(x,r)$.
+\end{remark}
+
+\noindent\linia
+
+\begin{exercise}
+    Let $x, y \in \R^n$, and $r = ||x - y||$. Show that
+    $$
+    \B\left(\frac{x + y}{2}, \frac{r}{2}\right) \subset \B(x, r) \cap \B(y, r)
+    $$
+\end{exercise}
+
+Denote $m = \dfrac{x+y}{2}$. Take $z \in \B\left(m, \dfrac{r}{2}\right)$.
+Thus, using the triangular inequality,
+
+$$||x - z|| \le ||x - m|| + ||m - z|| = \frac{1}{2}||x - y|| + ||m - z|| < r/2
++ r/2 = r$$
+$$||y - z|| \le ||y - m|| + ||m - z|| = \frac{1}{2}||y - x|| + ||m - z|| < r/2
++ r/2 = r$$
+
+So $z \in \B(x,r)$, $z \in \B(y, r)$ and $z \in \B(x,r) \cap \B(y, r)$.
+Therefore $\B(m, \frac{r}{2}) \subset \B(x, r) \cap \B(y, r)$.
+
+\noindent\linia
+
+\begin{exercise}
+    Show that the open balls $\B(x, r)$ of $R^n$ are open sets (with respect
+    to the Euclidean topology).
+\end{exercise}
+
+We have to prove that for every $y \in \B(x, r)$, there exists $\epsilon > 0$ such
+that $\B(y, \epsilon) \subset \B(x, r)$. Put $\epsilon = r - ||x - y||$. As
+we have proved in exercise 3, $\B(y, \epsilon) \subset \B(x,r)$. 
+So $\B(x,r)$ is open set. 
+
+\noindent\linia
+
+\begin{exercise}
+    Consider $X = \R$ endowed with the Euclidean topology. Are the following
+sets open? Are they closed?
+\end{exercise}
+\begin{enumerate}
+    \item $[0,1]$. It's not open set because for every $\epsilon > 0, \B(0,
+    \epsilon) = (-\epsilon, \epsilon) \not \subset [0,1]$. It's closed because
+    $[0,1]^c = (-\infty, 0) \cup (1, \infty)$ is an union of two open sets, as
+   we prove in item 3.  
+
+    \item $[0,1)$. It's not open for the same reason as before. It's not
+    closed because $B(1,\epsilon) = (1 - \epsilon, 1 + \epsilon) \not\subset
+    (-\infty, 0) \cup [1, \infty]$. 
+
+    \item $(-\infty,1)$. It's open because: take $x < 1$. Put $r = 1 - x$ and
+    take $z \in \B(x, r)$. If $z > x$, $|x - z| < 1 - x \implies z < 1$. If $z
+    < x$, it follows $z < 1$. It proves $z < 1$ and $(-\infty, 1)$ is open.
+    It's not closed cause $\forall \epsilon > 0, \B(1,\epsilon) \not \subset
+    [1, \infty)$. 
+    
+    \item the singletons. It's not open cause $\forall \epsilon > 0, x +
+    \epsilon/2 \in \B(x,\epsilon)$. It's close cause $(-\infty,
+    x)\cup(x,\infty)$ is union of open sets. 
+    
+    \item $\mathbb{Q}$. It's not open because for every open ball around a
+    rational, there are irrationals, that is, let $x \in \mathbb{Q}$ and take
+    $\epsilon > 0$, then there exists $y \in (\R - \mathbb{Q}) \cap
+    \B(x,\epsilon)$. It's not closed for the same reason, for every
+    irrational, there is rationals for every open ball. 
+
+    \begin{remark}
+        We shall prove the rationals are dense in the reals. Let $x \in
+        \mathbb{Q}$ and $\epsilon > 0$. If $\epsilon$ is irrational, take $x-
+        \epsilon/2 \subset (x - \epsilon, x + \epsilon)$. Suppose $x -
+        \epsilon/2$ is rational, then $\frac{2x - \epsilon}{2} = \frac{m}{n}$
+        for some integers $m$ and $n$, that is, $2x - \epsilon = 2m/n$ and
+        $\epsilon = 2(x - \frac{m}{n}) \in \mathbb{Q}$, contradiction. So there
+        is an irrational in $\B(x, \epsilon)$. If $\epsilon$ is rational,
+        consider 
+        $$y = \frac{1}{\sqrt{2}}(x - \epsilon) + (1 -
+        \frac{1}{\sqrt{2}})(x + \epsilon) = (x + \epsilon) - \epsilon\sqrt{2}$$ 
+        That is a convex combination, so
+        $y \in \B(x, \epsilon)$. Moreover, $y$ is irrational, with a similar
+        proof by contradiction. This proves the statement. 
+
+        On the other hand, we must prove for every two irrationals $(a,b)$,
+        there is a rational between them. Denote $c = b - a > 0$. Let $n\in
+        \mathbb{N}$ such that $n > \frac{1}{c} \implies cn > 1 \implies (bn -
+        an) > 1$. So exists $m \in (an, bn) \implies m/n \in (a,b)$. This
+        proves the second statement.   
+    \end{remark}
+\end{enumerate}
+
+\noindent\linia
+
+\begin{exercise}
+    A map is continuous if and only if the preimage of closed sets are closed sets.
+\end{exercise}
+
+First we shall prove that $f^{-1}(~^cA) = ~^c(f^{-1}(A))$. Let's prove the
+double inclusion. Take $x \in f^{-1}(~^cA)$. So there exists $y \in ~^cA$ such
+that $f(x) = y$. Suppose that $x \in f^{-1}(A)$. It implies the existence of
+$z \in A$ such that $y = f(x) = z$, absurd. So $x \in ~^c(f^{-1}(A))$.
+
+Now take $x \in ~^c(f^{-1}(A))$. Therefore, $\forall y \in A, f(x) \neq y$. In
+that case, $f(x) \in ~^cA \implies x \in f^{-1}(~^cA)$. Then we have showed
+the equality. 
+
+\vspace{5mm}
+
+Now let's prove the equivalence. Suppose $f$ is a continuos map and take a
+closed set $F$. We shall prove that $f^{-1}(F)$ is closed. Well, $^c(f^{-1}(F))
+= f^{-1}(~^cF)$ is open, because $~^cF$ is open, by the continuity. We
+conclude that $f^{-1}(F)$ is closed. 
+
+Suppose that for every closed set $F$, we have $f^{-1}(F)$ being closed. We
+will use that $A$ is open if $^cA$ is closed. This is true because $^c(^c(A))
+= A$. Take an open set $A$. $^c(f^{-1}(A)) = f^{-1}(~^cA)$
+is closed, because $~^cA$ is. Thus $f^{-1}(A)$ is open and we have proved the
+continuity of $f$. 

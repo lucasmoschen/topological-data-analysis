@@ -1,0 +1,254 @@
+\subsection{Important definitions}
+
+\begin{definition}
+    Let $(X, \T)$ and $(Y, \U)$ be two topological spaces, and $f, g : X \to Y$
+    two continuous maps. A homotopy between $f$ and $g$ is a map $F : X \times
+    [0, 1] \to Y$ such that:
+    \begin{enumerate}
+        \item $F(\cdot, 0)$ is equal to $f$, 
+        \item $F(\cdot, 1)$ is equal to $g$, 
+        \item $F : X \times [0, 1] \to Y$ is continuous.
+    \end{enumerate}
+    If such a homotopy exists, we say that the maps f and g are homotopic.
+\end{definition}
+
+\begin{remark}
+    Before asking for $F : X \times [0, 1] \to Y$ to be continuous, we have to
+    give $X \times [0, 1]$ a topology. The topology we choose is the product
+    topology. Consider the topological space $(X, \T)$, and endow $[0, 1]$
+    with the subspace topology of $\R$, denoted $T_{|[0,1]}$. The product
+    topology on $X \times [0, 1]$, denoted $T \otimes T_{|[0,1]}$, is defined
+    as follows: a set $O \subset X \times [0, 1]$ is open if and only if it
+    can be written as a union $U_{\alpha \in A} O_{\alpha} \times O_{\alpha}'$
+    where every $O_{\alpha}$ is an open set of $X$ and $O_{\alpha}'$ is an open set of $[0, 1]$.
+\end{remark}
+ 
+\begin{definition}
+    Let $(X, \T)$ and $(Y, \U)$ be two topological spaces. A homotopy
+    equivalence between $X$ and $Y$ is a pair of continuous maps $f : X \to Y$
+    and $g : Y \to X$ such that:
+    \begin{enumerate}
+        \item $g \circ f : X \to X$ is homotopic to the identity map $id: X \to X$,
+        \item $f \circ g : Y \to Y$ is homotopic to the identity map $id: Y \to Y$,
+    \end{enumerate}
+    If such a homotopy equivalence exists, we say that $X$ and $Y$ are homotopy equivalent.   
+\end{definition}
+
+\begin{definition}
+    Let $(X, \T)$ be a topological space and $Y \subset X$ a subset, endowed
+    with the subspace topology $T_{|Y}$. A retraction is a continuous map $r :
+    X \to Y$ such that $\forall y \in Y, r(y) = y$. 
+    
+    A deformation retraction is a homotopy $F : X \times [0, 1] \to Y$ between
+    the identity map $id: X \to X$ and a retraction $r : X \to Y$.
+\end{definition}
+
+\subsection{Exercises}
+
+\begin{exercise}
+    Let $f : \R^n \to X$ be a continuous map. Then $f$ is homotopic to a constant map.
+\end{exercise}
+
+I must prove that there exists a homotopy between $f$ and a constant map.
+Consider the function $F : \R^n \times [0,1] \to X$ defined as 
+$$
+F(x,t) = f(tx) 
+$$
+It's clear that $F(x,0) = f(0)$, for every $x \in \R^n$. So it's the constant
+map $f(0)$. We also have that $F(x,1) = f(x), \forall x \in \R^n$. 
+Moreover, let's prove $F$ is continuos. Denote $F' : \R^n \times \R \to X$ the
+function $F'(x,t) = f(xt)$ and $g: \R^n \times \R \to \R^n$ the function
+$g(x,t) = xt$. So $F' = f \circ g$. 
+
+Let's prove $g$ is a continuous function. As we are dealing with a real-valued
+function, by Proposition 1.19 from the notes, I can use the $\epsilon-\delta$
+proof. Let $(x,t) \in \R^{n+1}$ and $\epsilon > 0$. In the proof I use the
+norm 1, without loss of generality because of the equivalence of norms in
+$\R^n$. Put $\delta = \min\{1, \frac{\epsilon}{\max\{||x||, |t| + 1\}} \}$ and suppose $||(x,t) - (x',t')|| = ||x - x'|| + |t -
+t'| < \delta$. So,
+\begin{equation*}
+    \begin{split}
+        ||xt - x't'|| &= ||xt - xt' + xt' - x't'|| \\
+        &\le |t - t'|||x|| + |t'|||x - x'|| \\
+        &\le |t - t'|||x|| + (|t| + \delta)||x - x'|| \\
+        &< \max\{||x||, |t| + \delta\}\delta \\
+        &\le \max\{||x||, |t| + 1\}\delta \le \epsilon
+    \end{split}
+\end{equation*} 
+
+By this, $g$ is a continuos function. Since $f$ is also continuos, the
+composition $F'$ is also continuos, by Proposition 1.18. By Proposition 1.21,
+when we endow $F'$ in $\R^n \times [0,1]$, we obtain a continuos function,
+that is $F$ is continuos. Then we conclude that $f$ is homotopic to a constant
+function. 
+
+\noindent\linia
+
+\begin{exercise}
+    Let $f : \sphere_1 \to \sphere_2$ be a continuous map which is not
+    surjective. Prove that it is homotopic to a constant map where the unit sphere $\sphere_{n-1} = \{x \in \R^n,
+    ||x|| = 1\}$. 
+\end{exercise}
+
+Let $x_0 \in \sphere_2$ such that $x_0 \not\in f(\sphere_1)$ and
+consider the constant map $g(x) = -x_0$, for every $x \in \sphere_1$. Let
+$F: \sphere_1 \times [0,1] \to \sphere_2$ be defined as 
+$$
+F(x,t) = 2\frac{(1 - t)f(x) - tx_0}{||(1 - t)f(x) - tx_0||}
+$$
+
+The first thing we must prove it's well defined. Suppose that $(1 - t)f(x) -
+tx_0 = 0$. If $t = 1$, then $x_0 = 0$, an absurd given that $||x_0|| = 2$. If
+$t < 1, f(x) = \frac{t}{1-t}x_0$ and applying the norm on both sides $2 =
+||f(x)|| = \frac{t}{1-t}||x_0|| = 2\frac{t}{1-t} \implies t = 1/2$. If that is
+the case, $f(x) - x_0 = 0 \implies f(x) = x_0$, contradiction. Moreover, for
+all $x$ and $t, ||F(x,t)|| = 2 \implies F(\sphere_1, [0,1]) \subset
+\sphere_2$. 
+
+Now let's prove it's a homotopy:
+
+\begin{enumerate}
+    \item $F(x,0) = 2\frac{f(x)}{||f(x)||} = f(x), \forall x \in
+    \sphere_1$. 
+
+    \item $F(x,1) = 2\frac{-x_0}{||x_0||} = - x_0, \forall x \in
+    \sphere_1$. 
+
+    \item Consider the extension of the function $F' : \sphere_1 \times
+    [0,1] \to \R^3$. This function is continuous because it's a combination os
+    continuos function. So $F$ is continuos because it's a restriction of
+    $F'$. I needed to extend the function because $(1-t)f(x)$ is not necessary
+    in the sphere, so I couldn't prove it's continuos. However, when extended
+    we see each part is continuos. 
+\end{enumerate}
+
+By (1) - (3), we have proved $F$ is a homotopy and $f$ are homotopic to a
+constant function. 
+
+\begin{remark}
+    If the functions is surjective, it's harder to prove, and I couldn't yet.
+    For instance, this is a
+    reference\footnote{\url{https://math.stackexchange.com/questions/3807715/}
+    } (but the answers use specialized tools) 
+\end{remark}
+
+\noindent\linia
+
+\begin{exercise}
+    Show that being homotopic is a transitive relation between maps: for every
+    triplet of maps $f, g, h: X \to Y$, if $f$, $g$ are homotopic and $g$, $h$
+    are homotopic, then $f$, $h$ are homotopic.
+\end{exercise}
+
+We shall prove there exist a homotopy $H$ between $f$ and $h$. By assumption,
+there exists a homotopy $F$ between $f$ and $g$ and a homotopy $G$ between $g$
+and $h$. Define $H: X \times [0,1] \to Y$ such that 
+$$
+H(x,t) = \begin{cases}
+    F(x,2t), &0 \le t \le 1/2 \\
+    G(x,2t - 1), &1/2 < t \le 1   
+\end{cases}
+$$
+that is, $H$ behaves as $F$ until it reaches a half. When that occurs,
+$H(x,1/2) = F(x,1) = g(x) = G(x, 0)$. After that, $H$ follows $G$ until the
+end of the interval. So, it's clear that $H(x,0) = F(x,0) = f(x), \forall x
+\in X$ and $H(x,1) = G(x,1) = h(x), \forall x \in X$. Moreover, since $F$ and
+$G$ are continuos and in the point $t = 1/2$, both functions agree, $H$ is
+continuos and, therefore, $f$ and $h$ are homotopic. 
+
+\noindent\linia
+
+\begin{exercise}
+    Show that being homotopy equivalent is an equivalence relation (reflexive,
+    symmetric and transitive).
+\end{exercise}
+
+\begin{enumerate}
+    \item (\textit{reflexive}): Consider the identity map $id: X \to X$,
+    that is continuos.
+    We shall prove that this function is homotopic to itself. Consider $F : X
+    \times [0,1] \to X$ given by $F(x,t) = x$ for every $x$ and $t$. It's
+    clear this is a homotopy because $F(x,0) = F(x,1) = x$ and it's continuos. Moreover
+    $id \circ id = id$ by definition of identity. Therefore, there exists a
+    homotopy equivalence between $id$ and itself. We conclude $X \approx X$.  
+
+    \item (\textit{symmetric}): Suppose $X \approx Y$. So, there exists
+    continuos functions $f: X \to Y$ and $g: Y \to X$ that form a homotopy
+    equivalence. This means that $g: Y \to X$ and $f: X \to Y$ are a homotopy
+    equivalence as well. So $Y \approx X$.
+
+    \item (\textit{transitive}): Suppose $X \approx Y$, and let $f_1 : X \to
+    Y$ and $g_1: Y \to X$
+    form a homotopy equivalence. Also suppose $Y \approx Z$ and
+    let $f_2: Y \to Z$ and $g_2: Z \to Y$ form a homotopy equivalence.
+    Define $f_3 = f_2 \circ f_1$ and $g_3 = g_1 \circ g_2$. Let's proof this
+    is a homotopy equivalence. Both functions are continuos given that they
+    are a composition of continuos functions. 
+
+    \begin{enumerate}
+        \item $g_3 \circ f_3 = g_1 \circ g_2 \circ f_2 \circ f_1$ is homotopic
+        to $id: X \to X$.
+
+        Let $F_1$ be a homotopy between $g_1 \circ f_1$ and $id$ and $F_2$ a
+        homotopy between $g_2 \circ f_2$ and $id$. Define 
+        $$
+        F_3(x,t) = \begin{cases}
+            g_1 \circ F_2(\cdot,2t)\circ f_1(x), &0 \le t \le 1/2 \\
+            F_1(x, 2t - 1), &1/2 < t \le 1
+        \end{cases}
+        $$
+        So $F_3(x,0) = g_1(F_2(f_1(x),0)) = g_1(g_2(f_2(f_1(x)))) = g_3 \circ
+        f_3(x)$, for every $x$ and 
+        $F_3(x,1) = F_1(x,1) = x$, for every $x$. When $t = 1/2$, 
+        $$F_3(x, 1/2) = g_1(F_2(f_1(x), 1)) = g_1(f_1(x)) = F_1(x,0)$$
+        By this equality and the fact that composition of continuos
+        functions is a continuos map, we conclude that $F_3$ is continuos.
+        This implies that $g_3\circ f_3$ is homotopic to the identity.
+
+        \item $f_3 \circ g_3 = f_1 \circ f_2 \circ g_2 \circ g_1$ is homotopic
+        to $id: Z \to Z$.
+
+       This follows a quite similar demonstration and can be omitted. 
+
+    \end{enumerate}
+
+    By the points above $f_3$ and $g_3$ is a homotopy equivalence what proves
+    $X \approx Z$.  Consequently, homotopy equivalence is an equivalence relation.
+  
+\end{enumerate}
+
+\noindent\linia
+
+\begin{exercise}
+    Classify the letters of the alphabet into homotopy equivalence classes.
+\end{exercise}
+
+I will consider the upper case alphabet and each letter will be considered as
+a topological space (a subset from $\R^2$), for example the letter $O$ is
+homotopy equivalent to a circle, while $L$ is to an interval, or equivalently,
+a point. Observe that most of the letters are equivalent to a point, because
+we can think in a continuos reduction. When we have a hole, such as $A, D, R, O,
+P, Q$, this continuity is impossible since we'll have a point break. $B$ is a
+special case because we can't deform into a point without breaking points and
+also we cannot join the holes in one. So there is three classes, given by its
+representatives
+
+\begin{enumerate}
+    \item O
+    \item B
+    \item I
+\end{enumerate}
+
+\begin{center}
+    \begin{tabular}{c c c c c c c c c c c c c}
+     A & B & C & D & E & F & G & H & I & J & K & L & M   \\ 
+     1 & 2 & 3 & 1 & 3 & 3 & 3 & 3 & 3 & 3 & 3 & 3 & 3 
+    \end{tabular}
+    \end{center}
+
+\begin{center}
+    \begin{tabular}{c c c c c c c c c c c c c}
+     N & O & P & Q & R & S & T & U & V & W & X & Y & Z  \\ 
+     3 & 1 & 1 & 1 & 1 & 3 & 3 & 3 & 3 & 3 & 3 & 3 & 3     
+    \end{tabular}
+    \end{center}
