@@ -203,4 +203,45 @@ Hence $\R^3 - \{0\}$ and $\R^4 - \{0\}$ are not homotopy equivalent.
 
 \noindent\linia
 
-The computational exercises can be found in the Github\footnote{a}
+The computational exercises (22 - 26) can be found in the
+Github\footnote{\url{github.com/lucasmoschen/topological-data-analysis/blob/main/tutorials/tutorial-1.ipynb}}
+
+\begin{exercise}
+    Build triangulations of the letters of the alphabet, and compute their Euler characteristic.
+\end{exercise}
+
+\begin{exercise}
+    For every $n$, triangulate the bouquet of $n$ circles (see below). Compute
+    their Euler characteristic.
+\end{exercise}
+
+\begin{exercise}
+    Implement the following triangulation of the torus.
+\end{exercise}
+
+\begin{exercise}
+    Consider the following dataset of 30 points $x_0, ..., x_{29}$ in $R^2$.
+
+    Write a function that takes as an input a parameter $r \ge 0$, and returns
+    the simplicial complex $\mathcal{G}(r)$ defined as follows:
+    \begin{enumerate}
+        \item the vertices of $\mathcal{G}(r)$ are the points $x_0, ..., x_{29}$,
+        \item for all $i, j \in [[0, 29]]$ with $i \neq j$, the edge $[i, j]$ belongs to $\mathcal{G}(r)$ if and only if
+        $||x_i - x_j|| \le r$.
+    \end{enumerate}
+    
+    Compute the number of connected components of $\mathcal{G}(r)$ for several
+    values of $r$. What do you observe?
+\end{exercise}
+
+\begin{exercise}
+    A Erdos–Renyi random graph $\mathcal{G}(n, p)$ is a simplicial complex
+    obtained as follows:
+    \begin{enumerate}
+        \item add $n$ vertices $1, ..., n$,
+        \item for every $a, b \in [[1, n]]$, add the edge $[a, b]$ to the complex with probability $p$.
+    \end{enumerate}
+
+    Builds a function that, given $n$ and $p$, outputs a simplicial complex $\mathcal{G}(n, p)$. Observe
+    the influence of $p$ on the number of connected components of $\mathcal{G}(10, p)$ and $\mathcal{G}(100, p)$.
+\end{exercise}
