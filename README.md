@@ -10,6 +10,12 @@ Course notes: [SummerCourseTDA](https://raphaeltinarrage.github.io/files/EMAp/Su
 
 Exercises and main definitions: [notes](https://github.com/lucasmoschen/topological-data-analysis/blob/main/notes/exercises.pdf)
 
+# Table of Contents
+
+1. [Abstract](#abstract)
+2. [Tutorials](#tutorials)
+   1. [Tutorial 1](#tutorial-1)
+
 Abstract
 ---
 
