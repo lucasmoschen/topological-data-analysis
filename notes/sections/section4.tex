@@ -136,19 +136,22 @@ relation).
 
 Denote $k_i$ the number of simplices of dimension $i$, that is, $\chi (K) =
 \sum_{0 \le i \le k} (-1)^i k_i$, with $k$ being its dimension. Each simplex of dimension $i$ belongs to
-$M$, to $N$ or both, so let, respectively, 
+$M$, to $N$ or both. Denote $k_i^M, k_i^N$ and $k_i^{MN}$ the number od
+simplices of dimension $i$ in $M$, $N$ and $M \cap N$ respectively. So
 $$k_i = k_i^M + k_i^N - k_i^{MN}.$$
 Therefore, 
 $$
 \chi(K) = \sum_{0 \le i \le k} (-1)^i (k_i^M + k_i^N - k_i^{MN}) = \sum_{0 \le i \le k}(-1)^i k_i^M + \sum_{0 \le i \le k}(-1)^i k_i^N - \sum_{0 \le i \le k}(-1)^i k_i^{MN} 
 $$
-Let $m$ and $n$ be the dimension of $m$ and $n$ the dimension of $M$ and $N$,
+Let $m$ and $n$ be the dimension of $M$ and $N$,
 respectively. Now I shall prove $M \cap N$ is a simplicial complex. Take
 $\sigma \subset M \cap N$ and $\tau \subset \sigma$, then $\tau \subset \sigma
 \in M$ and $\tau \subset \sigma \in N$, what implies $\tau \in M \cap N$. It
-proves its a simplicial complex with dimension $p$. If the dimension of $M$ is
-$m$, $k_i^M = 0, \forall i > m$. Suppose not. So there is a simplex in $M$
-with dimension $> m$, a contraction. This holds for $N$ and $M \cap N$. 
+proves its a simplicial complex with dimension $p$. We know the dimension of $M$ is
+$m$, so it implies that for all $i > m$, $k_i^M = 0$. Suppose not and let $k_j^M > 0$ for
+some $j > m$, we would have a simplex with dimension greater or equal than
+$m$. This is a contradiction, because the the dimension of $M$ is the maximum
+dimension of its simplices. This holds for $N$ and $M \cap N$. 
 $$
 \chi(K) = \sum_{0 \le i \le k} (-1)^i (k_i^M + k_i^N - k_i^{MN}) = \sum_{0 \le i \le k}(-1)^i k_i^M + \sum_{0 \le i \le k}(-1)^i k_i^N - \sum_{0 \le i \le k}(-1)^i k_i^{MN} 
 $$
