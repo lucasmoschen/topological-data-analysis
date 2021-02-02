@@ -94,25 +94,24 @@ Let $x_0 \in \sphere_2$ such that $x_0 \not\in f(\sphere_1)$ and
 consider the constant map $g(x) = -x_0$, for every $x \in \sphere_1$. Let
 $F: \sphere_1 \times [0,1] \to \sphere_2$ be defined as 
 $$
-F(x,t) = 2\frac{(1 - t)f(x) - tx_0}{||(1 - t)f(x) - tx_0||}
+F(x,t) = \frac{(1 - t)f(x) - tx_0}{||(1 - t)f(x) - tx_0||}
 $$
 
 The first thing we must prove it's well defined. Suppose that $(1 - t)f(x) -
-tx_0 = 0$. If $t = 1$, then $x_0 = 0$, an absurd given that $||x_0|| = 2$. If
-$t < 1, f(x) = \frac{t}{1-t}x_0$ and applying the norm on both sides $2 =
-||f(x)|| = \frac{t}{1-t}||x_0|| = 2\frac{t}{1-t} \implies t = 1/2$.  If that
-is the case, $f(x) - x_0 = 0 \implies f(x) = x_0$, contradiction. Observe
-that $||f(x)|| = 2$ because $f(x) \in \sphere_2$. Moreover, for
-all $x$ and $t, ||F(x,t)|| = 2 \implies F(\sphere_1, [0,1]) \subset
+tx_0 = 0$. If $t = 1$, then $x_0 = 0$, an absurd given that $||x_0|| = 1$. If
+$t < 1, f(x) = \frac{t}{1-t}x_0$ and applying the norm on both sides $1 =
+||f(x)|| = \frac{t}{1-t}||x_0|| = \frac{t}{1-t} \implies t = 1/2$.  If that
+is the case, $f(x) - x_0 = 0 \implies f(x) = x_0$, contradiction.  Moreover, for
+all $x$ and $t, ||F(x,t)|| = 1 \implies F(\sphere_1, [0,1]) \subset
 \sphere_2$. 
 
 Now let's prove it's a homotopy:
 
 \begin{enumerate}
-    \item $F(x,0) = 2\frac{f(x)}{||f(x)||} = f(x), \forall x \in
+    \item $F(x,0) = \frac{f(x)}{||f(x)||} = f(x), \forall x \in
     \sphere_1$. 
 
-    \item $F(x,1) = 2\frac{-x_0}{||x_0||} = - x_0, \forall x \in
+    \item $F(x,1) = \frac{-x_0}{||x_0||} = - x_0, \forall x \in
     \sphere_1$. 
 
     \item Consider the extension of the function $F' : \sphere_1 \times
@@ -127,7 +126,7 @@ By (1) - (3), we have proved $F$ is a homotopy and $f$ are homotopic to a
 constant function. 
 
 \begin{remark}
-    If the functions is surjective, it's harder to prove, and I couldn't yet.
+    If the function is not surjective, it's harder to prove, and I couldn't yet.
     For instance, this is a
     reference\footnote{\url{https://math.stackexchange.com/questions/3807715/}
     } (but the answers use specialized tools) 
@@ -153,9 +152,29 @@ $$
 that is, $H$ behaves as $F$ until it reaches a half. When that occurs,
 $H(x,1/2) = F(x,1) = g(x) = G(x, 0)$. After that, $H$ follows $G$ until the
 end of the interval. So, it's clear that $H(x,0) = F(x,0) = f(x), \forall x
-\in X$ and $H(x,1) = G(x,1) = h(x), \forall x \in X$. Moreover, since $F$ and
-$G$ are continuos and in the point $t = 1/2$, both functions agree, $H$ is
-continuos and, therefore, $f$ and $h$ are homotopic. 
+\in X$ and $H(x,1) = G(x,1) = h(x), \forall x \in X$. Moreover, let's  prove
+$H$ is continuos. Let $A \subset Y$ closed set. So
+\begin{equation*}
+    \begin{split}
+        H^{-1}(A) &= \{(x,t) : F(x,2t) \in A, t \le 1/2\} \cup \{(x,t) : G(x,2t - 1) \in A, t \ge 1/2\} \\
+        &= \tilde{F}^{-1}(A) \cup \tilde{G}^{-1}(A), 
+    \end{split}
+\end{equation*}
+where $\tilde{F}(x,t) = F(x,2t)$ and $\tilde{G}(x,t) = G(x, 2t - 1)$, with domain being, respectively, $X \times [0,1/2]$ and $X \times [1/2, 1]$. As we see
+in the following remark, both functions are continuos, so $\tilde{F}^{-1}(A)
+\cup \tilde{G}^{-1}(A)$ is closed, what proves $H$ is continuos and,
+therefore, $f$ and $h$ are homotopic. 
+
+\begin{remark}
+    The map $(x,t) \mapsto (x,2t)$ is continuos. In order to see that, take $A
+    \subset X \times [0,1]$ open. So it can be written as $\bigcup_a O_a
+    \times I_a$, where $I_a \subset [0,1]$ is an open interval and $O_a
+    \subset X$ is open. The pre-image of $A$ is given by $\bigcup_a O_a
+    \times \frac{1}{2}I_a$, that is still open.  With that and using the fact
+    that combination of continuos functions is continuos, $\tilde{F}$ is
+    continuos. For a similar argument, 
+    $\tilde{G}$ is continuos. 
+\end{remark}
 
 \noindent\linia
 
@@ -202,8 +221,7 @@ continuos and, therefore, $f$ and $h$ are homotopic.
         f_3(x)$, for every $x$ and 
         $F_3(x,1) = F_1(x,1) = x$, for every $x$. When $t = 1/2$, 
         $$F_3(x, 1/2) = g_1(F_2(f_1(x), 1)) = g_1(f_1(x)) = F_1(x,0)$$
-        By this equality and the fact that composition of continuos
-        functions is a continuos map, we conclude that $F_3$ is continuos.
+        $F_3$ is continuos by a similar proof written in the last exercise. 
         This implies that $g_3\circ f_3$ is homotopic to the identity.
 
         \item $f_3 \circ g_3 = f_1 \circ f_2 \circ g_2 \circ g_1$ is homotopic
@@ -211,7 +229,7 @@ continuos and, therefore, $f$ and $h$ are homotopic.
 
        This follows a quite similar demonstration and can be omitted. 
 
-    \end{enumerate}
+    \end{enumerate} 
 
     By the points above $f_3$ and $g_3$ is a homotopy equivalence what proves
     $X \approx Z$.  Consequently, homotopy equivalence is an equivalence relation.

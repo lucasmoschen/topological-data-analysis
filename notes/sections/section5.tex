@@ -1,16 +1,144 @@
 \subsection{Important Definitions}
 
+\begin{definition}
+    Let $K$ be a simplicial complex. For any $n \ge 0$, define the sets
+$$K_n = \{\sigma \in K, dim(\sigma) \le n\}$$
+$$K_{(n)} = \{\sigma \in K, dim(\sigma) = n\}.$$
+The first set is a simplicial complex, called the n-skeleton of $K$.
+\end{definition}
+
+\begin{definition}
+    Let $n \ge 0$. The n-chains of $K$ is the set $C_n(K)$ whose elements are
+    the formal sums
+    $$\sum_{\sigma  \in K_{(n)}} \epsilon_{\sigma}\cdot \sigma \text{ where }
+    \forall \sigma \in K_{(n)}, \epsilon_{\sigma} \in \Z/2\Z.$$
+    We can give $C_n(K)$ a group structure via
+    $$
+    \sum_{\sigma \in K_{(n)}} \epsilon_{\sigma} \cdot \sigma + \sum_{\sigma \in K_{(n)}} \eta_{\sigma} \cdot \sigma = \sum_{\sigma \in K_{(n)}} (\epsilon_{\sigma} + \eta_{\sigma}) \cdot \sigma.$$
+\end{definition}
+
+\begin{definition}
+    Let $n \ge 1$, and $\sigma \in K_{(n)}$ a simplex of dimension $n$. We
+    define its boundary as the following element of $C_{n-1}(K)$:
+    $$
+    \partial_n \sigma = \sum_{\tau \subset \sigma, |\tau| = |\sigma| - 1} \tau
+    $$ and 
+    $$
+    \partial_n \sum_{\sigma \in K_{(n)}} \epsilon_{\sigma} \cdot \sigma  =  \sum_{\sigma \in K_{(n)}} \epsilon_{\sigma} \cdot \partial_n \sigma 
+    $$
+\end{definition}
+
+\begin{definition}
+    We define
+    \begin{enumerate}
+        \item The n-cycles: $Z_n(K) = Ker(\partial_n)$,
+        \item The n-boundaries: $B_n(K) = Im(\partial_{n+1}).$
+    \end{enumerate}
+    We say that two chains $c, c' \in C_n(K)$ are homologous if there exists
+    $b \in B_n(K)$ such that $c = c' + b$.
+\end{definition}
+
+\begin{definition}
+    The $n^{th}$ homology group of $K$ is $H_n(K) = Z_n(K)/B_n(K)$.
+\end{definition}
+
+\begin{definition}
+    Let $K$ be a simplicial complex and $n \ge 0$. Its $n^{th}$ Betti number
+    is the integer $\beta_n(K) = dim~ H_n(K)$.
+\end{definition}
+
+\begin{definition}
+    The homology groups of a topological space are the homology groups of any triangulation of it. We define their Betti numbers similarly.
+\end{definition}
+
 \subsection{Exercises}
 
 \begin{exercise}
-    Let $V$ be a $\Z/2\Z$-vector space, and $W$ a linear subspace. Using
-    Proposition 5.2, prove that
+    Let $V$ be a $\Z/2\Z$-vector space, and $W$ a linear subspace. Prove that
     $$\text{dim } V /W = \text{dim } V - \text{dim } W  .$$
 \end{exercise}
 
+Suppose $V$ is finite-dimensional and let $\{w_1, ..., w_m\}$ be a basis of
+$W$. So we can extend this to a basis on $V$, namely, $\{w_1, ..., w_m, v_1,
+..., v_{n}\}$, where, $\text{dim } V = m + n$. Consider the set $\{v_1 + W, ...,
+v_n + W\}.$ First, let's prove it's free.
+$$
+0 + W = \sum_{j=1}^n \lambda_j(v_j + W) = \left(\sum_{j=1}^n \lambda_j v_j \right) + W, 
+$$
+So $\left(\sum_{j=1}^n \lambda_j v_j \right) \in W$. But it implies it can be
+written as a linear combination of $\{w_1, ..., w_m\}$, what contradicts the
+fact that $\{w_1, ..., w_m, v_1,
+..., v_{n}\}$ is linear independent. 
+
+Now take $v + W \in V/W$, where $v = \sum_{j=1}^m \lambda_j w_j + \sum_{j=1}^n
+\lambda_{j+m} v_j$. So 
+\begin{equation*}
+    \begin{split}
+        v + W &= \left[\sum_{j=1}^m \lambda_j w_j + \sum_{j=1}^n
+        \lambda_{j+m} v_j\right] + W \\
+        &= \sum_{j=1}^m \lambda_j (w_j + W) + \sum_{j=1}^n
+        \lambda_{j+m} (v_j+ W) \\
+        &= \sum_{j=1}^n
+        \lambda_{j+m} (v_j+ W) 
+    \end{split}
+\end{equation*}
+
+We conclude $\{v_1,
+..., v_{n}\}$ is a basis what implies $\text{dim } V/W = n = m + n - m$. 
 
 
 \begin{exercise}
     Let $(G, +)$ be a group, potentially non-commutative. Prove that
     $$\forall g \in G, g + g = 0 \implies G \text{ is commutative.}$$
 \end{exercise}
+
+Let $u,v \in G$. So $u + v + v = u + (v + v) = u + 0 = u$. With that in mind,
+we see that 
+$$
+u + v + v + u = 0 \implies (u + v) + (v + u) = 0 
+$$
+We know $v + u$ and $u + v$ are elements of $G$. So we can add to each side
+and obtain 
+$$
+(u + v) + (v + u) + (v + u) = (v + u) \implies u + v = v + u
+$$
+As $u$ and $v$ are arbitrary, $G$ is commutative. 
+
+\begin{exercise}
+    Compute the Betti numbers $\beta_0(K), \beta_1(K)$ and $\beta_2(K)$ of the
+    following simplicial complex:
+    $$
+    K = \{[0], [1], [2], [3], [0, 1], [1, 2], [2, 3], [3, 0]\}.
+    $$
+\end{exercise}
+
+$Z_0(K) = C_0(K)$
+
+$B_0(K) = \{[0] + [1], [1] + [2], [2] + [3], [3] + [0], [0] + [2], [1] + [3],
+[0] + [1] + [2] + [3], 0\}$
+
+As $B_0$ have $2^3$ elements and $Z_0$ has $2^4$, we deduce that 
+$$\beta_0(K) = dim ~Z_0(K) - dim ~B_0(K) = 4 - 3 = 1$$
+
+$Z_1(K) = \{[0,1] + [1,2] + [2,3] + [3,0], 0\}$
+
+$B_1(K) = \{0\}$
+
+Nesse caso, observamos que, utilizando a mesma ideia do ponto anterior 
+$$\beta_1(K) = 1 - 0 = 1.$$
+
+$Z_2(K) = \{0\}$
+
+$B_2(K) = \{0\}$
+
+Portanto $\beta_2(K) = 0$. 
+
+
+\begin{exercise}
+    Compute the Betti numbers $\beta_0(K), \beta_1(K)$ and $\beta_2(K)$ of the
+    following simplicial complex:
+    $$
+    K = \{[0], [1], [2], [3], [0, 1], [1, 2], [2, 3], [3, 0], [0, 2], [1, 3], [0, 1, 2], [0, 1, 3], [0, 2, 3], [1, 2, 3]\}.
+    $$
+\end{exercise}
+
