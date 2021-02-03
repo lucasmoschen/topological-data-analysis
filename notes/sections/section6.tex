@@ -1,0 +1,165 @@
+\subsection{Important definitions}
+
+\begin{definition}
+    Let $i \in [[1, n]]$, and $d = dim(\sigma_i)$. The simplex $\sigma_i$ is
+    positive if there exists a cycle $c \in Z_d(K^i$ ) that contains
+    $\sigma_i$. Otherwise, $\sigma_i$ is negative.
+\end{definition}
+
+\begin{definition}
+    Defines for a set $V = \{0,1,...,n\}$ a simplicial complex 
+    $$
+    \Delta_n = \{S \subset C, S \neq \emptyset\}
+    $$
+    and call it simplicial standard n-simplex with boundary 
+    $$
+    \partial \Delta_n = \Delta_n/V
+    $$
+\end{definition}
+
+\begin{definition}
+    Define the boundary matrix of $K$, denoted $\Delta$ as follows:
+    $\Delta$ is a $n \times n$ matrix, whose 
+    $$\Delta_{i,j} = \begin{cases}
+    1, &\text{if }\sigma_i \subset \sigma_j \text{ and } |\sigma^i| =
+    |\sigma^j| - 1 \\
+    0, &\text{else} 
+    \end{cases}$$
+\end{definition}
+
+\subsection{Exercise}
+
+\begin{exercise}
+    Compute again the Betti numbers of the simplicial complexes of Exercises 29 and 30, using the incremental algorithm.
+\end{exercise}
+
+\begin{enumerate}
+    \item    $K = \{[0], [1], [2], [3], [0, 1], [1, 2], [2, 3], [3, 0]\}.$
+    
+    First we determine the ordering to be as placed in the set. It fulfills the
+    required property. After, we find the signals for it $\sigma^i$. The first
+    four elements are positive, because, $\partial_0$ has $C_0(K^i)$ as
+    kernel. On the other hand $[0,1]$, $[1,2]$ and $[2,3]$ are negatives. At
+    last $[3,0]$ is positive, because $[0,1] + [1,2] + [2,3] + [3,0]$ belongs
+    to $Z_1(K^8)$. Now we can follow the algorithm thorough a table: 
+
+    \begin{center}
+        \begin{tabular}{ c|c|c|c|c|c|c|c|c}
+         - & $\sigma^1$ & $\sigma^2$ & $\sigma^3$ & $\sigma^4$ & $\sigma^5$ &
+         $\sigma^6$ & $\sigma^7$ &$\sigma^8$ \\ 
+         \hline
+         Signal & + & + & + & + & - & - & - & + \\  
+         $\beta_0(K)$ & 1 & 2 & 3 & 4 & 3 & 2 & 1 & 1 \\ 
+         $\beta_1(K)$ & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1\\     
+         $\beta_2(K)$ & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\     
+
+        \end{tabular}
+    \end{center}
+
+    \item  $K = \{[0], [1], [2], [3], [0, 1], [1, 2], [2, 3], [3, 0], [0, 2], [1, 3], [0, 1, 2], [0, 1, 3], [0, 2, 3], [1, 2, 3]\}.
+    $
+    
+    First we determine the ordering to be as placed in the set. It fulfills
+    the required property. After, we find the signals for it $\sigma^i$.  The vertices have positive signal. The following three edges cannot form any cycle, so they are negative. The last three edges are part of a cycle considering three other already placed of its dimension. When we achieve the simplices with dimension 2, the first three must be negative, because when we sum every combination of them, the boundary has image different from 0. The last, however will be positive.  
+    Now we can follow the algorithm thorough a table: 
+
+    \begin{center}
+        \begin{tabular}{ c|c|c|c|c|c|c|c|c|c|c|c|c|c|c}
+         - & $\sigma^1$ & $\sigma^2$ & $\sigma^3$ & $\sigma^4$ & $\sigma^5$ &
+         $\sigma^6$ & $\sigma^7$ &$\sigma^8$ &$\sigma^9$ &$\sigma^{10}$
+         &$\sigma^{11}$ &$\sigma^{12}$ &$\sigma^{13}$ &$\sigma^{14}$ \\ 
+         \hline
+         Signal & + & + & + & + & - & - & - & + & + & + & - & - & - & + \\  
+         $\beta_0(K)$ & 1 & 2 & 3 & 4 & 3 & 2 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1\\ 
+         $\beta_1(K)$ & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 2 & 3 & 2 & 1 & 0 & 0 \\     
+         $\beta_2(K)$ & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1\\     
+
+        \end{tabular}
+    \end{center}
+
+\end{enumerate}
+
+The result corroborates with those found previously. 
+
+\noindent\linia
+
+\begin{exercise}
+    Prove that $\partial \Delta_n$ is a triangulation of the $(n -1)$-sphere
+    $\sphere_{n-1} \subset \R^n$. 
+\end{exercise}
+
+\textcolor{red}{It's clear that $\partial \Delta_n$ is a simplicial complex, because, for
+every simplex $\sigma \in \partial \Delta_n$ and $\tau \subset \sigma$, $\tau
+\in \Delta_n$, because its a simplicial complex and $\tau \neq V$, then $\tau
+\in \partial \Delta_n$. I shall prove that $|\partial \Delta_n|$, the
+topological realization of the set, is homeomorphic to the sphere. 
+We can describe the convex hull of boundary of the simplex as 
+$$
+B_n :=|\partial \Delta_n| = \{(\alpha_0, ..., \alpha_n) \in [0,1]^{n+1}, \sum_{i=0}^n \alpha_i = 1 \text{ and for some } i, \alpha_i = 0\}
+$$
+Let $H = \{(x_0, ..., x_n) \in \R^{n+1} | \sum_{i=0}^n x_i = 1\}$. It's clear
+that $B_n \subset H$. I claim $H$ is homeomorphic to $\R^n$. Define
+$f: \R^n \to H$ to be $f(x_1, ...,x_n) = (1 - \sum_{i=1}^n x_i, x_1, ...,
+x_n)$. Let's prove it is injective. Take two points in the hyperplane such
+that 
+$$
+(1 - \sum_{i=1}^n x_i, x_1, ...,
+x_n) = (1 - \sum_{i=1}^n y_i, y_1, ...,
+y_n) \implies y_1 = x_1, ..., y_n = x_n
+$$
+what proves $f$ is injective. Take $y = (y_0, ..., y_n) \in H$ and define $x =
+(y_1, ..., y_n)$, then $f(x) = (1 - \sum_{i=1}^n y_i, y_1, ..., y_n) = (y_0,
+..., y_n) = y$ and $f$ is surjective. Extend the $H$ to $\R^{n+1}$ in order to
+prove $f$ is continuos with $\epsilon$-$\delta$. Suppose $x = (x_1, ..., x_n)
+\in \R^n$ and $\epsilon > 0$. Let $\delta = \epsilon/2 $ and suppose $||x - y|| <
+\delta$. By the equivalence of the norms, I can use the norm 1 to prove it. Then
+\begin{equation*}
+    \begin{split}
+        ||f(x) - f(y)|| &= |\sum_{i=1}^n (y_i - x_i)| + |x_1 - y_1| + ... + |x_n - y_n| \\
+        &\le \sum_{i=1}^n |y_i - x_i| + \sum_{i=1}^n |y_i - x_i| \\
+        &= 2||x - y|| < 2\delta = \epsilon
+    \end{split}
+\end{equation*}
+and $f$ is continuos. Because of that, when we restrict the image of $f$, it
+will remain continuos. Let's do it with the inverse extended defined as
+$$
+g(x_0, ..., x_n) = (x_1,...,x_n)
+$$
+Take $x = (x_0,...,x_n) \in R^{n+1}$ and $\epsilon > 0$. Let $\delta =
+\epsilon$ and suppose $||x-y||<\delta$. So 
+\begin{equation*}
+    \begin{split}
+        ||g(x) - g(y)|| &= |x_1 - y_1| + ... + |x_n - y_n| \\
+        &\le |x_1 - y_1| + ... + |x_n - y_n| + |x_0 - y_0| \\
+        &= ||x-y|| < \epsilon
+    \end{split}
+\end{equation*}
+So $g$ is also continuos. In particular $g$ restricted to $H$ is also
+continuos and it's equal to $f^{-1}$. Therefore $f$ is a Homeomorphism.
+Because of that $\sphere_{n-1}$ is homeomorphic to $f(\sphere_{n-1})$. Let's
+prove $f(\sphere_{n-1})$ is homeomorphic to $\sphere_n \cap H$.}
+
+\noindent\linia
+
+\begin{exercise}
+    Show that the algorithm stops after a finite number of steps.
+\end{exercise}
+
+Consider the algorithm
+
+\textbf{Algorithm}: Reduction of the boundary matrix
+
+{\bf Input}: a boundary matrix $\Delta$
+
+{\bf Output}: a reduced matrix $\tilde{\Delta}$
+\begin{verbatim}
+    for i <- 1 to n do 
+        while there exists i < j com delta(i) = delta(j) do
+            add column i to column j
+\end{verbatim}
+
+\noindent\linia 
+
+\begin{exercise}
+    Apply Algorithm to solve Exercise 31.
+\end{exercise}
