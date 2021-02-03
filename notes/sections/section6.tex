@@ -88,56 +88,59 @@ The result corroborates with those found previously.
     $\sphere_{n-1} \subset \R^n$. 
 \end{exercise}
 
-\textcolor{red}{It's clear that $\partial \Delta_n$ is a simplicial complex, because, for
+It's clear that $\partial \Delta_n$ is a simplicial complex, because, for
 every simplex $\sigma \in \partial \Delta_n$ and $\tau \subset \sigma$, $\tau
-\in \Delta_n$, because its a simplicial complex and $\tau \neq V$, then $\tau
-\in \partial \Delta_n$. I shall prove that $|\partial \Delta_n|$, the
-topological realization of the set, is homeomorphic to the sphere. 
-We can describe the convex hull of boundary of the simplex as 
+\in \Delta_n$ - since it's a simplicial complex - and $\tau \neq V$, then $\tau
+\in \partial \Delta_n$. I shall prove that the topological realization of
+$\Delta_n$, denoted as $B_n$, is homeomorphic to the $\sphere_{n-1}$. We can
+describe it
 $$
-B_n :=|\partial \Delta_n| = \{(\alpha_0, ..., \alpha_n) \in [0,1]^{n+1}, \sum_{i=0}^n \alpha_i = 1 \text{ and for some } i, \alpha_i = 0\}
+B_n = \{(\alpha_0, ..., \alpha_n) \in [0,1]^{n+1}, \sum_{i=0}^n \alpha_i = 1 \text{ and for some } i, \alpha_i = 0\}
 $$
 Let $H = \{(x_0, ..., x_n) \in \R^{n+1} | \sum_{i=0}^n x_i = 1\}$. It's clear
-that $B_n \subset H$. I claim $H$ is homeomorphic to $\R^n$. Define
-$f: \R^n \to H$ to be $f(x_1, ...,x_n) = (1 - \sum_{i=1}^n x_i, x_1, ...,
-x_n)$. Let's prove it is injective. Take two points in the hyperplane such
-that 
+that $B_n \subset H$. Define $C_n := \partial \B(b,r) \cap H$ such that $C_n
+\subset \text{interior } \Delta_n$. We'll show it's homeomorphic
+to $B_n$. 
+
+Let $b = \frac{1}{n+1}(1,...,1) \in \R^{n+1}$ and take $x \in C_n$. Consider
+the half line which start in $b$ and crosses $x$. Its equation can be
+described as $b + \alpha(x - b)$. It intersects $B_n$ when at least one of its
+coordinates is zero and the other are between $0$ and $1$. The sum will be
+always 1 because we are in $H$. Denote $x_{(m)} = \min\{x_i : i^{th}
+\text{coordinate of } x\}$. Let's take $\alpha$ such that 
 $$
-(1 - \sum_{i=1}^n x_i, x_1, ...,
-x_n) = (1 - \sum_{i=1}^n y_i, y_1, ...,
-y_n) \implies y_1 = x_1, ..., y_n = x_n
+b_{(m)} + \alpha(x_{(m)} - b_{(m)}) = 0 \implies \alpha = \frac{1}{1 - (n+1)x_{(m)}}
 $$
-what proves $f$ is injective. Take $y = (y_0, ..., y_n) \in H$ and define $x =
-(y_1, ..., y_n)$, then $f(x) = (1 - \sum_{i=1}^n y_i, y_1, ..., y_n) = (y_0,
-..., y_n) = y$ and $f$ is surjective. Extend the $H$ to $\R^{n+1}$ in order to
-prove $f$ is continuos with $\epsilon$-$\delta$. Suppose $x = (x_1, ..., x_n)
-\in \R^n$ and $\epsilon > 0$. Let $\delta = \epsilon/2 $ and suppose $||x - y|| <
-\delta$. By the equivalence of the norms, I can use the norm 1 to prove it. Then
+For every other $i \neq (m)$, 
 \begin{equation*}
     \begin{split}
-        ||f(x) - f(y)|| &= |\sum_{i=1}^n (y_i - x_i)| + |x_1 - y_1| + ... + |x_n - y_n| \\
-        &\le \sum_{i=1}^n |y_i - x_i| + \sum_{i=1}^n |y_i - x_i| \\
-        &= 2||x - y|| < 2\delta = \epsilon
+        b_i + \alpha(x_i - b_i) &= \frac{1}{n+1}\left(1 + \frac{1}{1 - (n+1)x_{(m)}}(x_i(n+1) - 1)\right) \\
+        &= \frac{1}{n+1}\left(1 - \frac{1}{1 - (n+1)x_{(m)}}(1 - x_i(n+1))\right) \\
+        &= \frac{1}{n+1}\left((n+1)\frac{x_i - x_{m}}{1 - (n+1)x_{(m)}}\right) \\
+        &= \frac{x_i - x_{m}}{1 - (n+1)x_{(m)}} \ge 0
     \end{split}
 \end{equation*}
-and $f$ is continuos. Because of that, when we restrict the image of $f$, it
-will remain continuos. Let's do it with the inverse extended defined as
-$$
-g(x_0, ..., x_n) = (x_1,...,x_n)
-$$
-Take $x = (x_0,...,x_n) \in R^{n+1}$ and $\epsilon > 0$. Let $\delta =
-\epsilon$ and suppose $||x-y||<\delta$. So 
-\begin{equation*}
-    \begin{split}
-        ||g(x) - g(y)|| &= |x_1 - y_1| + ... + |x_n - y_n| \\
-        &\le |x_1 - y_1| + ... + |x_n - y_n| + |x_0 - y_0| \\
-        &= ||x-y|| < \epsilon
-    \end{split}
-\end{equation*}
-So $g$ is also continuos. In particular $g$ restricted to $H$ is also
-continuos and it's equal to $f^{-1}$. Therefore $f$ is a Homeomorphism.
-Because of that $\sphere_{n-1}$ is homeomorphic to $f(\sphere_{n-1})$. Let's
-prove $f(\sphere_{n-1})$ is homeomorphic to $\sphere_n \cap H$.}
+since $x_{(m)} < 1/(n+1)$. Note that $1 = \sum_{j=0}^m x_j \ge x_i + nx_{(m)}
+\implies 1 - (n+1)x_{(m)} \ge x_i - x_m$ and we conclude that $b_i +
+\alpha(x_i - b_i) \in [0,1]$. After proving this function is well defined,
+let's prove it's a homeomorphism. Suppose it's not injective. In this case for
+some point $p$ in $B_n$ there is two in $C_n$ that maps into $p$. In other words,
+there are two segments starting in $b$ and passing thorough points $c_1, c_2
+\in C_n$ with the same image $p$. So both segments have two points in common,
+what implies they are the same. So there is a segment that crosses twice
+$C_n$. Suppose, no loss of generality, that $c_1$ is between $p$ and $c_2$. So
+$1 = ||c_2 - p|| > ||c_1 - p|| = 1$, what is a contraction. So this map is
+injective.Take $y$ from $B_n$ and make the half segment $b$ to $y$. It's clear
+it crosses $C_n$ because $p$ is in its interior. The continuity of the map
+comes from $x \mapsto x_{(m)}$ being continuos. So, when we compose continuous
+functions, we obtain a continuous map. For a similar argument, one can see the
+inverse is continuous. Therefore $B_n$ and $C_n$ are homeomorphic. Now we must
+prove that $C_n$ is homeomorphic to $\sphere_{n-1}$, because if this is true,
+by transitivity, $B_n \simeq \sphere_{n-1}$. 
+
+\textcolor{red}{How to prove the last homeomorphism, any suggestions?}
+
+
 
 \noindent\linia
 
