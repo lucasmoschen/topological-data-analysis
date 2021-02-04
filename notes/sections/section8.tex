@@ -1,0 +1,59 @@
+\subsection{Important definitions}
+
+\begin{definition}
+    Let $X \subset \R^n$ and $i \ge 0$. The $i^{th}$ Betti curve of $X$ is the
+    map
+    \begin{align*}
+        \beta_i(t) : &\R^+ \to \mathbb{N} \\
+        &t \mapsto \beta_i(X^t)     
+    \end{align*}
+    As a consequence of the nerve theorem, the map $t \to \beta_i(t)$ is equal
+    to $t \mapsto \beta_i(Cech^t(X)).$ In practice, we may use the following
+    map, called the $i^{th}$ Betti curve of the Rips complex of $X$ 
+    \begin{align*}
+        \beta_i^{Rips}(t) : &\R^+ \to \mathbb{N} \\
+        &t \mapsto \beta_i(Rips^t(X))     
+    \end{align*}
+\end{definition}
+
+
+\subsection{Exercises}
+
+\begin{exercise}
+    Show that $t \mapsto \beta_0(t)$ is non-increasing. Show that $t \mapsto
+    \beta_0^{Rips}(t)$ is also non-increasing.
+\end{exercise}
+
+\noindent\linia
+
+The computational exercises (44 - 46) can be found in the
+Github\footnote{\url{github.com/lucasmoschen/topological-data-analysis/blob/main/tutorials/tutorial-2.ipynb}}
+
+\begin{exercise}
+    In the notebook is given a subset of $\R^4$ with 200 elements. It has been
+    sampled on a famous 2-dimensional object. Compute the Betti curves of its
+    Rips complex on $[0, 1]$. Can you recognize which surface it is?
+\end{exercise}
+
+\noindent\linia
+
+\begin{exercise}
+    In the notebook is given a collection of images from
+    \url{https://www.cs.columbia.edu/CAVE/software/softlib/coil-20.php}. It
+    consists of 20 objects, for each of which 72 pictures have been taken.
+    Each image has 128×128 pixels. Embed each collection of 72 images in R
+    128×128 , and compute the Betti curves of the corresponding Rips complex.
+\end{exercise}
+
+\noindent\linia
+
+\begin{exercise}
+    We are given the data of this
+    paper\footnote{\url{https://pubmed.ncbi.nlm.nih.gov/26812805/}}. It
+    consists in 14 correlation matrices, each matrix representing correlations
+    between the components of a protein. Transform the matrices of
+    correlations into matrices of distances. Then, compute the 1-Betti curves
+    of the Rips complex for each of these matrices of distances. Compare the
+    Betti curves of the different proteins. Do you recognize two different
+    types of proteins (open and closed )?
+\end{exercise}

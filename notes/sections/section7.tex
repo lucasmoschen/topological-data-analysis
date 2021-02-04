@@ -256,7 +256,46 @@ conclude that $d_H(X, Y) = \inf\{t \ge 0, X \subset Y^t, Y \subset X^t\}.$
     \item The medial axis is similar to the circle, a unique point in the
     origin. Then $reach(square) = d(0,square) = 1$. 
 
-    \item We already know the open interval is the median axis of the ellipse. 
+    \item Suppose $a > b$ for simplification, but in the other  case, we only
+    need to change the axis, what does not affect the reach. Let $(w,z) \in \R^2$ in the exterior of the ellipse. Suppose we have
+    two different projections of this point in the ellipse and consider the
+    circle centered in $(w,z)$ with distance being this minimum. Both figures
+    are convex, so all points in the segment between the projections are in
+    the interior of the circle and the ellipse, however this is an absurd, because
+    the arc in the ellipse between the projection points are,
+    therefore, inside the circle, meaning, their distance too $(w,z)$ is smaller.
+    So there cannot be two projections. The existence of a projection can be
+    given by the ellipse being closed and bounded. I can say the same argument
+    for points above and below the $x-axis$. I infer, then, that an open
+    interval in the $x-axis$ is the median axis. Let's find this interval. Let
+    $(t,0) \in \R^2$. 
+
+    Consider the problem
+    \begin{align*}
+        &\min_{x,y} (x - t)^2 + y^2 \\
+        s.t. ~& \frac{x^2}{a^2} + \frac{y^2}{b^2} = 1
+    \end{align*}
+    I can translate this problem into 
+    $$
+    \min_{x \in [-a,a]} f(x) = (x - t)^2 + b^2 - \frac{b^2}{a^2}x^2
+    $$
+    Using calculus, 
+    $$
+    f'(x) = 2(x - t) - 2\frac{b^2}{a^2}x = 0 \implies x = \frac{t}{1 - b^2/a^2}
+    $$
+    Then our answer is $x \in \{-a, a, \frac{t}{1 - b^2/a^2}\}$ that minimizes
+    $f$. If $x \neq \pm a$, we have two values of $y$ which address the
+    minimum and, therefore, there are two projections. Denote $E$ to refer the ellipse. We then have that $med(E) =
+    (-s,s)$
+    such that, if $x > s$, $f(x)$ is minimized at $a$ and $if x < -s$, at
+    $-a$. Para encontrar $s$, devemos calcular $f(\frac{t}{1 - b^2/a^2})$ e
+    comparar com $(a - t)^2$. Assim 
+    $$
+    \left(\frac{a^2t}{a^2 - b^2} - t\right)^2 + b^2 - b^2a^2\frac{t^2}{(a^2 - b^2)^2} = t^2b^2\left(b^2 - \frac{a^2}{(a^2 - b^2)^2}\right) + b^2 > (a - t)^2
+    $$
+    Solving this inequality we find $s$ and, then, the reach will be the
+    distance $(a - s)^2$. 
+
 
 \end{enumerate}
 
@@ -274,11 +313,20 @@ conclude that $d_H(X, Y) = \inf\{t \ge 0, X \subset Y^t, Y \subset X^t\}.$
     simplices of the clique complex.
 \end{exercise}
 
+Denote the clique complex $K$. Let $\sigma \in K$ and $\tau \subset \sigma$.
+Then $\sigma$ is a clique of the graph. Since $\tau$ is subset, every node it
+contais connects to each other, because they connect in $\sigma$. So $\tau$ is
+a clique, what implies $\tau \in K$.
+
+In the worst case, all the vertices connects to each other, so we'll have 
+$$
+\sum_{i=1}^n \genfrac(){0pt}{}{n}{i} = 2^n - 1
+$$
+simplices. 
+
 \noindent\linia
 
 \begin{exercise}
     Improve the previous proposition as follows: Cech$^t(X) \subset $
     Rips$^t(X) \subset $ Cech$^{ct}(X)$, where $c = \sqrt{\frac{2n}{n+1}}$.
 \end{exercise}
-
-\newpage
