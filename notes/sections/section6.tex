@@ -122,25 +122,42 @@ For every other $i \neq (m)$,
 \end{equation*}
 since $x_{(m)} < 1/(n+1)$. Note that $1 = \sum_{j=0}^m x_j \ge x_i + nx_{(m)}
 \implies 1 - (n+1)x_{(m)} \ge x_i - x_m$ and we conclude that $b_i +
-\alpha(x_i - b_i) \in [0,1]$. After proving this function is well defined,
-let's prove it's a homeomorphism. Suppose it's not injective. In this case for
-some point $p$ in $B_n$ there is two in $C_n$ that maps into $p$. In other words,
-there are two segments starting in $b$ and passing thorough points $c_1, c_2
-\in C_n$ with the same image $p$. So both segments have two points in common,
-what implies they are the same. So there is a segment that crosses twice
-$C_n$. Suppose, no loss of generality, that $c_1$ is between $p$ and $c_2$. So
-$1 = ||c_2 - p|| > ||c_1 - p|| = 1$, what is a contraction. So this map is
-injective.Take $y$ from $B_n$ and make the half segment $b$ to $y$. It's clear
-it crosses $C_n$ because $p$ is in its interior. The continuity of the map
-comes from $x \mapsto x_{(m)}$ being continuos. So, when we compose continuous
-functions, we obtain a continuous map. For a similar argument, one can see the
-inverse is continuous. Therefore $B_n$ and $C_n$ are homeomorphic. Now we must
+\alpha(x_i - b_i) \in [0,1]$, that is, $b - \alpha(x - b) \in B_n$. Denote
+this map $f$. Let's prove it's a homeomorphism. 
+
+\begin{enumerate}
+    \item $f$ is injective: suppose not. In this case, there is some point $p
+    \in B_n$ and two points $c_1, c_2 \in C_n$ such that there are two
+    segments starting at $p$ and crossing $B_n$ at $p$, however it one passes
+    thorough $c_1$ and $c_2$ respectively. So both segments have two points in
+    common, what implies they are equal. Suppose, no loss of generality, that
+    $c_1$ is between $p$ and $c_2$. Then $1 = ||c_2 - b|| < ||c_1 - b|| = 1$,
+    a contradiction and $f$ is injective. 
+
+    \item $f$ is surjective: Take $y$ from $B_n$ and make the half segment $b$ to $y$. It's clear
+    it crosses $C_n$ because $p$ is in its interior.
+
+    \item $f$ is continuos: First we note that the map $x \mapsto x_{(m)}$ is
+    continuos. $\alpha$ can be seen as map from $B_n$ to $[1, + \infty)$. If
+    we extend this map to a map $\alpha ' : \R^{n+1} \to \R$, we see that
+    $\alpha '$ is continuous by composing continuous functions and its
+    restriction $\alpha$ will be continuos as well. Using the composition
+    property, we infer $f$ is continuos. 
+    
+    \item $f^{-1}$ is continuos: The inverse is quite similar. We consider $y
+    \in B_n$ and the
+    half line $b + \alpha(y - b)$. We map $y$ to the value such $||b +
+    \alpha(y - b)||^2 = r^2$. We obtain, using the norm 2, 
+    $$
+    \alpha = \frac{r^2(n+1) -1}{(n+1)||y-b||}
+    $$
+    what is a continuous function of $y$. 
+
+\end{enumerate}
+
+Therefore $B_n$ and $C_n$ are homeomorphic by $f$. Now we must
 prove that $C_n$ is homeomorphic to $\sphere_{n-1}$, because if this is true,
 by transitivity, $B_n \simeq \sphere_{n-1}$. 
-
-\textcolor{red}{How to prove the last homeomorphism, any suggestions?}
-
-
 
 \noindent\linia
 
