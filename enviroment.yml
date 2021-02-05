@@ -10,8 +10,8 @@ dependencies:
   - blas=1.0=mkl
   - boost-cpp=1.74.0=h9359b55_0
   - bzip2=1.0.8=h7b6447c_0
-  - ca-certificates=2020.12.5=ha878542_0
-  - certifi=2020.12.5=py38h578d9bd_1
+  - ca-certificates=2021.1.19=h06a4308_0
+  - certifi=2020.12.5=py38h06a4308_0
   - cgal-cpp=5.2=h09f2f54_0
   - cycler=0.10.0=py_2
   - decorator=4.4.2=py_0
@@ -32,6 +32,7 @@ dependencies:
   - libedit=3.1.20191231=h14c3975_1
   - libffi=3.3=he6710b0_2
   - libgcc-ng=9.3.0=h2828fa1_18
+  - libgfortran-ng=7.3.0=hdf63c60_0
   - libgomp=9.3.0=h2828fa1_18
   - libpng=1.6.37=h21135ba_2
   - libsodium=1.0.18=h7b6447c_0
@@ -48,7 +49,8 @@ dependencies:
   - networkx=2.5=py_0
   - numpy=1.19.2=py38h54aff64_0
   - numpy-base=1.19.2=py38hfa32c7d_0
-  - openssl=1.1.1i=h7f98852_0
+  - openssl=1.1.1i=h27cfd23_0
+  - pandas=1.2.1=py38ha9443f7_0
   - parso=0.8.0=py_0
   - pexpect=4.8.0=py38_0
   - pickleshare=0.7.5=py38_1000
@@ -60,8 +62,11 @@ dependencies:
   - python=3.8.5=h7579374_1
   - python-dateutil=2.8.1=py_0
   - python_abi=3.8=1_cp38
+  - pytz=2021.1=pyhd3eb1b0_0
   - pyzmq=19.0.2=py38he6710b0_1
   - readline=8.0=h7b6447c_0
+  - scipy=1.6.0=py38h91f5cce_0
+  - seaborn=0.11.1=pyhd3eb1b0_0
   - setuptools=52.0.0=py38h06a4308_0
   - six=1.15.0=py38h06a4308_0
   - sqlite=3.33.0=h62c20be_0
