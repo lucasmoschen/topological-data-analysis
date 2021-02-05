@@ -74,6 +74,8 @@
     Prove that, when $X$ is closed and bounded, a projection always exists. A set is bounded if there exists $R > 0$ such that $X \subset \B(R, 0)$.
 \end{exercise}
 
+\begin{proof}
+
 Let $X$ a closed and bounded subset of $\R^n$. So it's compact by the
 Heine-Borel theorem. The map $y \mapsto ||y - x||$ is continuos because for $y
 \in \R^n$ and $\epsilon > 0$, if we take $\delta = \epsilon$, and $||y - w|| <
@@ -85,7 +87,9 @@ $$
 By the Weierstrass theorem, the function $y \mapsto ||y-x||$ has a global
 minimum in $X$, that is, there exist $x^* \in X$ such that $||y - x^*|| \le
 ||y - x||, \forall x \in X$. So the infimum is well defined and a projection
-always exist. However the uniqueness is not guaranteed. 
+always exist. However the uniqueness is not guaranteed.
+
+\end{proof}
 
 \noindent\linia
 
@@ -93,6 +97,8 @@ always exist. However the uniqueness is not guaranteed.
     Let $||\cdot||+{\infty}$ be the sup norm of function $f : \R^n \to \R^m:
     ||f||_{\infty} = \sup_{x \in \R^n} ||f(x)||$. Prove that $d_H(X, Y) = ||\text{dist}(\cdot, X) - \text{dist}(\cdot, Y)||_{\infty}$.
 \end{exercise}
+
+\begin{proof}
 
 We have that 
 \begin{equation*}
@@ -126,6 +132,8 @@ d_H(X,Y) \ge \sup_{w \in R^n}|dist(w,X) - dist(w,Y)| = ||dist(\cdot, X) - dist(\
 $$
 We conclude $d_H(X,Y) = ||dist(\cdot, X) - dist(\cdot, Y)||_{\infty}$. 
 
+\end{proof}
+
 \noindent\linia
 
 \begin{exercise}
@@ -136,6 +144,8 @@ We conclude $d_H(X,Y) = ||dist(\cdot, X) - dist(\cdot, Y)||_{\infty}$.
     $$ 
     Give an example for which $d_H(X^t, Y^t) < d_H(X, Y)$.
 \end{exercise}
+
+\begin{proof}
 
 Let's do it by steps, because dealing with infimum and supremum can be trick.
 Let $t \ge 0$ and denote $dist$ by $d$. 
@@ -197,12 +207,16 @@ rings join. But it shall not increase. However if we take the origin, $d(0,Y)
 = 1 - t$, but no other can have a greater distance. Thus, $d_H(X^t, Y^t) = 1-t
 < 1 = d_H(X, Y)$. 
 
+\end{proof}
+
 \noindent\linia
 
 \begin{exercise}
     Show that the Hausdorff distance is equal to
     $$inf\{t \ge 0, X \subset Y^t \text{ and } Y \subset X^t\}$$
 \end{exercise}
+
+\begin{proof}
 
 Let $t$ such that $X \subset Y^t$ and $Y \subset X^t$. Take $x \in X$ and
 consider $d(x,Y)$. By the choice of $t, x \in Y^t$, what implies $d(x,Y) \le
@@ -219,6 +233,8 @@ X), \forall y \in Y$. As $s > d(x,Y)$, there is $y \in Y$ such that $||x - y||
 contradiction, since $s < \inf\{t \ge 0, X \subset Y^t, Y \subset X^t\}$. We
 conclude that $d_H(X, Y) = \inf\{t \ge 0, X \subset Y^t, Y \subset X^t\}.$  
 
+\end{proof}
+
 \noindent\linia 
 
 \begin{exercise}
@@ -233,6 +249,8 @@ conclude that $d_H(X, Y) = \inf\{t \ge 0, X \subset Y^t, Y \subset X^t\}.$
         (\frac{x_2}{b})^2 = 1 \}$
     \end{enumerate}
 \end{exercise}
+
+\begin{proof}
 
 \begin{enumerate}
     \item Define this set as $Z$. So $reach(Z) = \inf\{d(y,Z), y \in
@@ -299,6 +317,8 @@ conclude that $d_H(X, Y) = \inf\{t \ge 0, X \subset Y^t, Y \subset X^t\}.$
 
 \end{enumerate}
 
+\end{proof}
+
 \noindent\linia
 
 \begin{exercise}
@@ -313,6 +333,8 @@ conclude that $d_H(X, Y) = \inf\{t \ge 0, X \subset Y^t, Y \subset X^t\}.$
     simplices of the clique complex.
 \end{exercise}
 
+\begin{proof}
+
 Denote the clique complex $K$. Let $\sigma \in K$ and $\tau \subset \sigma$.
 Then $\sigma$ is a clique of the graph. Since $\tau$ is subset, every node it
 contais connects to each other, because they connect in $\sigma$. So $\tau$ is
@@ -322,7 +344,9 @@ In the worst case, all the vertices connects to each other, so we'll have
 $$
 \sum_{i=1}^n \genfrac(){0pt}{}{n}{i} = 2^n - 1
 $$
-simplices. 
+simplices.
+
+\end{proof}
 
 \noindent\linia
 

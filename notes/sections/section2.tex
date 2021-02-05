@@ -41,6 +41,8 @@
     Show that the topological spaces $\R^n$ and $\B(0, 1) \subset \R^n$ are homeomorphic.
 \end{exercise}
 
+\begin{proof}
+
 Let $f: \B(0,1) \to \R^n$ be defined as $f(x) = \dfrac{x}{1 - ||x||}$. I
 observe it's well defined because $||x|| < 1$. We shall prove $f$ is a
 homeomorphism. 
@@ -103,13 +105,17 @@ homeomorphism.
 \end{enumerate}
 
 By items (1) - (4), we conclude $f$ is a homeomorphism and $\B(0,1) \simeq
-\R^n$. 
+\R^n$.
+
+\end{proof}
 
 \noindent\linia
 
 \begin{exercise}
     Show that $\B(x, r)$ and $\B(y, s)$ are homeomorphic.
 \end{exercise}
+
+\begin{proof}
 
 Consider the function $f: \B(0, 1) \to \B(c, r)$ given by $f(x) = r\cdot x + c$. Let's
 prove $f$ is a homeomorphism. 
@@ -145,6 +151,8 @@ By items (1) - (4), we conclude $f$ is a homeomorphism and $\B(0,1) \simeq
 $$
 \B(0,1) \simeq \B(x,r) \text{ and } \B(0,1) \simeq \B(y, s) \text{ implies } \B(x,r) \simeq \B(y,s).
 $$
+    
+\end{proof}
 
 \noindent\linia
 
@@ -156,6 +164,8 @@ $$
     $$
     for any $a, b > 0$. 
 \end{exercise}
+
+\begin{proof}
 
 Consider the function $f : \sphere(0,1) \to \mathcal{S}(a,b)$ defined as
 $f(x,y) = (ax, by)$. Let's prove it is a homeomorphism. 
@@ -203,11 +213,15 @@ $f(x,y) = (ax, by)$. Let's prove it is a homeomorphism.
 By items (1) - (4), we conclude $f$ is a homeomorphism and $\sphere(0,1) \simeq
 \mathcal{S}(a,b)$.
 
+\end{proof}
+
 \noindent\linia
 
 \begin{exercise}
     Show that $[0, 1)$ and $(0, 1)$ are not homeomorphic.
 \end{exercise}
+
+\begin{proof}
 
 We shall prove by contradiction. Suppose these exists a homeomorphism $f :
 [0,1) \to (0,1)$. Let $0 < z = f(0) < 1$ and define the following function
@@ -245,3 +259,5 @@ In that sense, we have a homeomorphism between a topological space with 1
 connected component and other with 2 connected components, what is a
 contradiction by Proposition 2.14 from the notes. We conclude that $[0,1)$ and
 $(0,1)$ are not homeomorphic.
+
+\end{proof}

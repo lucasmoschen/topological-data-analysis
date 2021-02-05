@@ -49,6 +49,8 @@
     Let $f : \R^n \to X$ be a continuous map. Then $f$ is homotopic to a constant map.
 \end{exercise}
 
+\begin{proof}
+
 I must prove that there exists a homotopy between $f$ and a constant map.
 Consider the function $F : \R^n \times [0,1] \to X$ defined as 
 $$
@@ -82,6 +84,8 @@ when we endow $F'$ in $\R^n \times [0,1]$, we obtain a continuos function,
 that is $F$ is continuos. Then we conclude that $f$ is homotopic to a constant
 function. 
 
+\end{proof}
+
 \noindent\linia
 
 \begin{exercise}
@@ -89,6 +93,8 @@ function.
     surjective. Prove that it is homotopic to a constant map where the unit sphere $\sphere_{n-1} = \{x \in \R^n,
     ||x|| = 1\}$. 
 \end{exercise}
+
+\begin{proof}
 
 Let $x_0 \in \sphere_2$ such that $x_0 \not\in f(\sphere_1)$ and
 consider the constant map $g(x) = -x_0$, for every $x \in \sphere_1$. Let
@@ -132,6 +138,8 @@ constant function.
     } (but the answers use specialized tools) 
 \end{remark}
 
+\end{proof}
+
 \noindent\linia
 
 \begin{exercise}
@@ -139,6 +147,8 @@ constant function.
     triplet of maps $f, g, h: X \to Y$, if $f$, $g$ are homotopic and $g$, $h$
     are homotopic, then $f$, $h$ are homotopic.
 \end{exercise}
+
+\begin{proof}
 
 We shall prove there exist a homotopy $H$ between $f$ and $h$. By assumption,
 there exists a homotopy $F$ between $f$ and $g$ and a homotopy $G$ between $g$
@@ -176,12 +186,16 @@ therefore, $f$ and $h$ are homotopic.
     $\tilde{G}$ is continuos. 
 \end{remark}
 
+\end{proof}
+
 \noindent\linia
 
 \begin{exercise}
     Show that being homotopy equivalent is an equivalence relation (reflexive,
     symmetric and transitive).
 \end{exercise}
+
+\begin{proof}
 
 \begin{enumerate}
     \item (\textit{reflexive}): Consider the identity map $id: X \to X$,
@@ -236,11 +250,15 @@ therefore, $f$ and $h$ are homotopic.
   
 \end{enumerate}
 
+\end{proof}
+
 \noindent\linia
 
 \begin{exercise}
     Classify the letters of the alphabet into homotopy equivalence classes.
 \end{exercise}
+
+\begin{proof}
 
 I will consider the upper case alphabet and each letter will be considered as
 a topological space (a subset from $\R^2$), for example the letter $O$ is
@@ -270,4 +288,6 @@ representatives
      N & O & P & Q & R & S & T & U & V & W & X & Y & Z  \\ 
      3 & 1 & 1 & 1 & 1 & 3 & 3 & 3 & 3 & 3 & 3 & 3 & 3     
     \end{tabular}
-    \end{center}
+\end{center}
+    
+\end{proof}

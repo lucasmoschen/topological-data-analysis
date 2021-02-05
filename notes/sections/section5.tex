@@ -58,6 +58,8 @@ The first set is a simplicial complex, called the n-skeleton of $K$.
     $$\text{dim } V /W = \text{dim } V - \text{dim } W  .$$
 \end{exercise}
 
+\begin{proof}
+
 Suppose $V$ is finite-dimensional, such that $dim ~V = n + m$ and $dim ~W =
 m$. As we have a finite basis and a finite field, we only have finite
 number of combinations from the vector of this basis. In special $V$ is finite. By Proposition 5.2,
@@ -105,12 +107,16 @@ Now take $v + W \in V/W$, where $v = \sum_{j=1}^m \lambda_j w_j + \sum_{j=1}^n
 We conclude $\{v_1,
 ..., v_{n}\}$ is a basis what implies $\text{dim } V/W = n = m + n - m$. 
 
+\end{proof}
+
 \noindent\linia
 
 \begin{exercise}
     Let $(G, +)$ be a group, potentially non-commutative. Prove that
     $$\forall g \in G, g + g = 0 \implies G \text{ is commutative.}$$
 \end{exercise}
+
+\begin{proof}
 
 Let $u,v \in G$. So $u + v + v = u + (v + v) = u + 0 = u$. With that in mind,
 we see that 
@@ -124,6 +130,8 @@ $$
 $$
 As $u$ and $v$ are arbitrary, $G$ is commutative. 
 
+\end{proof}
+
 \noindent\linia
 
 \begin{exercise}
@@ -133,6 +141,8 @@ As $u$ and $v$ are arbitrary, $G$ is commutative.
     K = \{[0], [1], [2], [3], [0, 1], [1, 2], [2, 3], [3, 0]\}.
     $$
 \end{exercise}
+
+\begin{proof}
 
 $Z_0(K) = C_0(K)$
 
@@ -157,6 +167,8 @@ $B_2(K) = \{0\}$
 
 Portanto $\beta_2(K) = 0$. 
 
+\end{proof}
+
 \noindent\linia
 
 \begin{exercise}
@@ -166,6 +178,8 @@ Portanto $\beta_2(K) = 0$.
     K = \{[0], [1], [2], [3], [0, 1], [1, 2], [2, 3], [3, 0], [0, 2], [1, 3], [0, 1, 2], [0, 1, 3], [0, 2, 3], [1, 2, 3]\}.
     $$
 \end{exercise}
+
+\begin{proof}
 
 $Z_0(K) = C_0(K)$
 
@@ -199,3 +213,5 @@ $Z_2(K) = \{[0,1,2] +[0,1,3] + [0,2,3] + [1,2,3], 0\}$
 $B_2(K) = \{0\}$
 
 Portanto $\beta_2(K) = 1$. 
+
+\end{proof}

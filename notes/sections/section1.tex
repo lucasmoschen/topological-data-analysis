@@ -38,6 +38,8 @@
     Let $X = \{0, 1, 2\}$ be a set with three elements. What are the  different topologies that X admits?
 \end{exercise}
 
+\begin{proof}
+
 As we know every Topology contains $\emptyset$ and $\{0,1,2\}$, so we can
 disconsider when writing the topologies, that is, all below contain these
 subsets. 
@@ -60,6 +62,8 @@ subsets.
     
     \item (3) No singleton: $\{\{0,1\}\} - \{\{1,2\}\} - \{\{0,2\}\} $
 \end{itemize}
+    
+\end{proof}
 
 \noindent\linia
 
@@ -68,6 +72,8 @@ subsets.
     topology} $\T$ on $\Z$, defined as follows: a subset $O \subset
     \Z$ is an open set if and only if $O = \emptyset$ or $^c O$ is finite. Here, $^cO = \{x \in \Z, x \not\in O\}$ represents the complementary of $O$ in $\Z$
 \end{exercise}
+
+\begin{proof}
 
 \begin{enumerate}
     \item Show that $\T$ is a topology on $\Z$.
@@ -108,12 +114,16 @@ subsets.
     
 \end{enumerate}
 
+\end{proof}
+
 \noindent\linia
 
 \begin{exercise}
     Let $x \in \R^n$, and $r > 0$. Let $y \in \B(x, r)$. Show that
     $$\B(y,r - ||x-y||) \subset \B(x,r)$$
 \end{exercise}
+
+\begin{proof}
 
 Let $z \in \B(y, r - ||x-y||)$, so $||z - y|| < r - ||x - y|| \implies ||z-y||
 + ||x-y|| < r$. We can conclude
@@ -127,6 +137,8 @@ In that sense, $z \in \B(x,r)$ and $\B(y, r - ||x - y||) \subset \B(x,r)$.
     $\B(x,r), ||x - y|| \approx r$ and $B(y,r -\epsilon) \not \subset B(x,r)$.
 \end{remark}
 
+\end{proof}
+
 \noindent\linia
 
 \begin{exercise}
@@ -135,6 +147,8 @@ In that sense, $z \in \B(x,r)$ and $\B(y, r - ||x - y||) \subset \B(x,r)$.
     \B\left(\frac{x + y}{2}, \frac{r}{2}\right) \subset \B(x, r) \cap \B(y, r)
     $$
 \end{exercise}
+
+\begin{proof}
 
 Denote $m = \dfrac{x+y}{2}$. Take $z \in \B\left(m, \dfrac{r}{2}\right)$.
 Thus, using the triangular inequality,
@@ -147,6 +161,8 @@ $$||y - z|| \le ||y - m|| + ||m - z|| = \frac{1}{2}||y - x|| + ||m - z|| < r/2
 So $z \in \B(x,r)$, $z \in \B(y, r)$ and $z \in \B(x,r) \cap \B(y, r)$.
 Therefore $\B(m, \frac{r}{2}) \subset \B(x, r) \cap \B(y, r)$.
 
+\end{proof}
+
 \noindent\linia
 
 \begin{exercise}
@@ -154,10 +170,14 @@ Therefore $\B(m, \frac{r}{2}) \subset \B(x, r) \cap \B(y, r)$.
     to the Euclidean topology).
 \end{exercise}
 
+\begin{proof}
+
 We have to prove that for every $y \in \B(x, r)$, there exists $\epsilon > 0$ such
 that $\B(y, \epsilon) \subset \B(x, r)$. Put $\epsilon = r - ||x - y||$. As
 we have proved in exercise 3, $\B(y, \epsilon) \subset \B(x,r)$. 
 So $\B(x,r)$ is open set. 
+
+\end{proof}
 
 \noindent\linia
 
@@ -165,6 +185,9 @@ So $\B(x,r)$ is open set.
     Consider $X = \R$ endowed with the Euclidean topology. Are the following
 sets open? Are they closed?
 \end{exercise}
+
+\begin{proof}
+
 \begin{enumerate}
     \item $[0,1]$. It's not open set because for every $\epsilon > 0, \B(0,
     \epsilon) = (-\epsilon, \epsilon) \not \subset [0,1]$. It's closed because
@@ -214,11 +237,15 @@ sets open? Are they closed?
     \end{remark}
 \end{enumerate}
 
+\end{proof}
+
 \noindent\linia
 
 \begin{exercise}
     A map is continuous if and only if the preimage of closed sets are closed sets.
 \end{exercise}
+
+\begin{proof}
 
 First we shall prove that $f^{-1}(~^cA) = ~^c(f^{-1}(A))$. Let's prove the
 double inclusion. Take $x \in f^{-1}(~^cA)$. So there exists $y \in ~^cA$ such
@@ -241,3 +268,5 @@ will use that $A$ is open if $^cA$ is closed. This is true because $^c(^c(A))
 = A$. Take an open set $A$. $^c(f^{-1}(A)) = f^{-1}(~^cA)$
 is closed, because $~^cA$ is. Thus $f^{-1}(A)$ is open and we have proved the
 continuity of $f$. 
+
+\end{proof}

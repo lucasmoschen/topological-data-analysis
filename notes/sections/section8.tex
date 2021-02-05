@@ -24,6 +24,39 @@
     \beta_0^{Rips}(t)$ is also non-increasing.
 \end{exercise}
 
+\begin{proof}
+
+
+In order to prove the first statement, I shall find for each $t$ the value
+$\beta_i(X^t)$, that is, we need to find $\beta_i(K)$, where $K$ is a
+triangulation of $X^t$. Actually, I'll the weak version, where $|K|$ must be
+homotopy equivalent to $X^t$. In particular, a consider the $Cech^t(X)$. Take
+$s < t$ and consider $\mathcal{N}(\mathcal{V}^s), \mathcal{N}(\mathcal{V}^t)$
+the nerves respectively. If $\{x_1, ..., x_m\}$ is m-simplex of
+$\mathcal{N}(\mathcal{V}^s)$, we have that $\bigcap_{k=1}^m \bar{\B}(x_k, s)
+\neq \emptyset$. For each $k \in [[1,m]], \bar{\B}(x_k, s) \subset
+\bar{\B}(x_k, t)$ and for that reason  $\bigcap_{k=1}^m \bar{\B}(x_k, t)
+\neq \emptyset \implies \{x_1, ..., x_m\} \in \mathcal{N}(\mathcal{V}^t)$.
+Therefore as $t$ increases, no simplices are removed and, maybe, more can be
+added. 
+
+Remember that $\beta_0(K) = dim Z_0(K) - dim B_0(K)$. We already know that
+$Z_0(K) = C_0(K)$, so its dimension do not change. Otherwise, observe that
+$C_1(\mathcal{N}(\mathcal{V}^s)) \subset C_1(\mathcal{N}(\mathcal{V}^t))$, as we
+proved above. In that sense, no element can be removed from
+$B_0(\mathcal{N}(\mathcal{V}^s))$ and hence its dimension cannot decrease (and
+it can increase if we add new elements to it, when new simplices in
+$C_1(\mathcal{N}(\mathcal{V}^t))$ are not mapped in the existing images). We
+conclude $t \mapsto \beta_0(\mathcal{N}(\mathcal{V}^t))$ is non-increasing,
+then $t \mapsto \beta_0(X^t)$ is non-increasing. 
+
+We can use the same argument to prove $t \mapsto \beta_0^{Rips}(t)$ is
+non-increasing. When $t$ increases, we only can add edges, but not remove, as
+the considered difference increases (note the condition to add edges is $x_i,
+x_j$ such that $||x_i - x_j|| \le 2t$).  
+    
+\end{proof}
+
 \noindent\linia
 
 The computational exercises (44 - 46) can be found in the
