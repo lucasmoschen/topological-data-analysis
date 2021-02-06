@@ -15,6 +15,7 @@ Exercises and main definitions: [notes](https://lucasmoschen.github.io/files/dis
 - [Topological Data Analysis](#topological-data-analysis)
 - [Table of Contents](#table-of-contents)
   - [Abstract](#abstract)
+  - [How to use](#how-to-use)
   - [Tutorials](#tutorials)
     - [Tutorial 1](#tutorial-1)
     - [Tutorial 2](#tutorial-2)
@@ -26,7 +27,25 @@ This is a topic from applied mathematics with the objective of analyze
 datasets using techniques from topology. This framework is insensitive to a
 particular metric and provides dimensionality reduction and robustness to
 noise. In this course, we aim to understand the basic topological concepts as
-topological space and apply it using Python. The tutorials are written by the professor. 
+topological space and apply it using Python. The tutorials are written by the
+professor. 
+
+How to use 
+---
+
+For running this project you'll need: 
+
+1. [Clone](https://git-scm.com/docs/git-clone) this repository in your
+   machine. 
+2. Install
+   [Anaconda](https://docs.conda.io/projects/conda/en/latest/user-guide/install/linux.html),
+   [Python](https://docs.python-guide.org/starting/install3/linux/) and
+   [JupyterLab](https://jupyter.org/install). 
+3. Create the environment with the same `enviroment.yml`file. [More details](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#creating-an-environment-from-an-environment-yml-file).
+
+
+After that, enter in the jupyter environment and run the notebooks as you
+wish. 
 
 Tutorials 
 ---
