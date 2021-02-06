@@ -8,13 +8,16 @@ Course website: [https://raphaeltinarrage.github.io/EMAp.html](https://raphaelti
 
 Course notes: [SummerCourseTDA](https://raphaeltinarrage.github.io/files/EMAp/SummerCourseTDA.pdf)
 
-Exercises and main definitions: [notes](https://github.com/lucasmoschen/topological-data-analysis/blob/main/notes/exercises.pdf)
+Exercises and main definitions: [notes](https://lucasmoschen.github.io/files/disciplines/topological-data-analysis/exercises.pdf)
 
 # Table of Contents
 
-1. [Abstract](#abstract)
-2. [Tutorials](#tutorials)
-   1. [Tutorial 1](#tutorial-1)
+- [Topological Data Analysis](#topological-data-analysis)
+- [Table of Contents](#table-of-contents)
+  - [Abstract](#abstract)
+  - [Tutorials](#tutorials)
+    - [Tutorial 1](#tutorial-1)
+    - [Tutorial 2](#tutorial-2)
 
 Abstract
 ---
@@ -41,3 +44,26 @@ We can also represent the torus triangulation.
 After these, with the library [GUDHI](https://gudhi.inria.fr/), we can calculate the number of connected componentes and the Euler characteristic. We can see the behaviour of these characteristics in the Erdős–Rényi graph. 
 
 ![erdos](images/graph-erdos-n-components.png)
+
+### Tutorial 2 
+
+Were we study the concept of Homology, t-thickening and the Betti curves, that
+are related, with "holes" in each dimension. For example, $\beta_0$ indicates
+the number of connected components, $\beta_1$ the number of circular holes and
+$\beta_2$ empty volumes. In the practice, we only have a finite number of
+points in some space and with topology inference one can understand the
+homology of these points. For example, consider some points of the circle and
+its thickening with $t = 0.2$.
+
+![](images/thickening-circle.png) 
+
+Observe with that value we have one connected component, but does not have a
+hole. Therefore it's homotopy equivalent to a point. Below we see the first
+Betti Curve of an a series of data points with a lot of noisy. For each $t$ we
+calculate the Betti Number of a triangulation of the t-thickening. We can
+infer the real first Betti number is 2. 
+
+![](images/betti-curve-1-torus.png)
+
+We also consideres two interesting datasets: one with images and another with
+proteins. Please see the notebooks for more details. 
