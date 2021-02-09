@@ -1,0 +1,168 @@
+\subsection{Important definitions}
+
+\begin{definition}
+    Let $K$ and $L$ be two simplicial complexes, and $V_K, V_L$ their set of 
+    vertices. A simplicial map between $K$ and $L$ is a map $f : V_K \to V_L$ such that
+    $\forall \sigma \in K, f(\sigma) \in L$. When there is no risk of
+    confusion, we may denote a simplicial map $f : K \to L$ instead of $f :
+    V_K \to V_L$.
+    
+    We define a linear map $f_n : C_n(K) \to C_n(L)$ as follows (definition on the simplices, and
+    extended by linearity):
+    $$
+    f_n : \sigma \mapsto f(\sigma) \mathbbm{1}\{dim(f(\sigma)) = n\}
+    $$
+\end{definition}
+
+\begin{definition}
+    By definition of the homology groups, we have defined a map 
+    $$(f_n)_* : H_n(K) \to H_n(L).$$ It is called the induced map in homology.
+    Explicitly, the map $(f_n)_*$ can be described as follows (the following formula is to be
+    read modulo boundaries):
+    $$c = \sum_{\sigma \in K_{(n)}} \epsilon_{\sigma} \cdot \sigma \mapsto
+    \sum_{\sigma \in K_{(n)}} \epsilon_{\sigma} \cdot f_n(\sigma).$$
+\end{definition}
+
+\begin{definition}
+    Let $i \ge 0$, $t_0 \ge 0$ and consider a cycle $c \in
+    H_i(Cech^{t_0}(X))$. Its death time is
+    $$\sup_\{t \ge t_0, (i^t_{t_0}) (c) \neq 0\}$$
+    and its birth time is
+    $$\inf\{t \ge t0, (i^{t_0}_t)^{-1}(\{c\}) \neq \emptyset\}$$
+
+    \begin{center}
+        {\it persistence = death time - birth time}
+    \end{center}
+\end{definition}
+
+\begin{definition}
+    A persistence module $\mathbb{V}$ over $\R^+$ with coefficients in
+    $\Z/2\Z$ is a pair $(\mathbb{V}, \mathbbm{v})$ where $\mathbb{V} = (V^t)_{t
+    \in \R^+}$ is a family of $\Z/2\Z$-vector spaces, and $\mathbbm{v} = (v_s^t
+    : V^s \to V^t)_{s \le t \in \R^+}$ a family of linear maps such that:
+    \begin{enumerate}
+        \item for every $t \in \R^+, v^t_t$ is the identity map,
+        \item for every $r,s,t \in \R^+$ such that $r \le s \le t$, we have
+        $v_s^t \circ v_r^s = v_r^t$
+    \end{enumerate}
+When the context is clear, we may denote $\mathbb{V}$ instead of $(\mathbb{V}, \mathbbm{v})$. 
+\end{definition}
+
+\subsection{Exercises}
+
+\begin{exercise}
+    Consider a linear map $f : V \to W$ between vector spaces. Suppose that
+    there exists linear subspaces $A \subset V$ and $B \subset W$ such that
+    $f(A) \subset B$. Show that one can define a map $f_* : V /A \to W/B $ as
+    follows: to any equivalence class $v + A$ of $V /A$, let $f_*(v + A) = f(v) + B$.
+\end{exercise}
+
+\begin{proof}
+    We have to prove $f_*$ is well-defined. In other words, if $v_1 + A = v_2 + A$, that
+    is, $v_1 - v_2 \in A$, then $f(v_1) + B = f(v_2) + B$. In that sense, we must
+    prove that $f(v_1) - f(v_2) = f(v_1 - v_2) \in B$. But this is true since by
+    hypotheses $v_1 - v_2 \in A \implies f(v_1 - v_2) \in f(A) \subset B$. Then
+    $f_*$ is indeed well defined. 
+
+    Let's prove it's linear. Let $\alpha \in \mathbb{F}$, and $v_1, v_2 \in V$. So
+    \begin{equation*}
+        \begin{split}
+            f_*((\alpha v_1 + v_2) + A) &= f(\alpha v_1 + v_2) + B \\
+            &= \alpha f(v_1) + f(v_2) + B \\
+            &= \alpha(f(v_1) + B) + (f(v_2) + B) \\
+            &= \alpha f_*(v_1 + A) + f_*(v_2 + A)
+        \end{split}
+    \end{equation*}
+    The third equation is true because $B = \alpha B + B$, that is, if $b \in B$,
+    then $b = \alpha 0 + b \in \alpha B + B$ and in $b \in \alpha B + B$, one can
+    find $b_1, b_2 \in B$ such that $b = \alpha b_1 + b_2$. Because of the
+    linearity of $B$, we have $b \in B$.  We conclude $f_*$ is a linear map
+    induced by $f$ between quotient linear spaces.     
+\end{proof}
+
+\noindent\linia
+
+\begin{exercise}
+    Let the simplicial $K = \{[0], [1], [2], [3], [4], [5], [0, 1], [1, 2], [2, 3], [3, 4],
+    [4, 5], [5, 0]\}$ and  $L = \{[0], [1], [2], [0, 1], [1, 2], [2, 0]\}$.
+    Consider the simplicial map $f : i \mapsto i$ modulo 3. Show that the induced map $(f_1)_*$ is zero.
+\end{exercise}
+
+\begin{proof}
+    We have that $(f_1)_* : H_1(K) \to H_1(L)$, such that $$H_1(K) = \{[0,1] +
+    [1,2]+ [2,3] + [3,4] + [4,5] + [5,0], 0\}.$$
+    This happens because $Z_1(K)$ has only two elements not equivalents. The
+    same can be told about $H_1(L)$. Then 
+    \begin{equation*}
+        \begin{split}
+            (f_1)_*([0,1] + ... + [5,0]) &= f_1([0,1]) + ... + f_1([5,0]) \\
+            &= f([0,1]) + ... + f([5,0]) \\
+            &= [0,1] + [1,2] + [2,0] + [0,1] + [1,2] + [2,0] = 0
+        \end{split}
+    \end{equation*}
+    And its trivial that $(f_1)_*(0) = 0$ (linear map), what implies the induced map $(f_1)_*$ is zero.
+\end{proof}
+
+\noindent\linia
+
+\begin{exercise}
+    Fill the empty spaces ( ) in the following proof of Brouwer’s fixed point theorem.
+\end{exercise}
+
+\begin{proof}
+    Let $f : \bar{\B}(0,1) \to \bar{\B}(0,1)$ be a continuous map, where
+    $\bar{\B}(0,1)$ denotes the closed unit ball of $\R^n$. Let us show that
+    $f$ admits a fixed point (i.e., an element $x \in \bar{\B}(0, 1)$ such
+    that $f(x) = x$). By contradiction, suppose that it is not the case. We
+    can build an application $F : \bar{\B}(0,1) \to \sphere(0, 1) \subset  \bar{\B}(0,1)$, such that
+    $F$ restricted to $\sphere(0, 1)$ is the identity. To do so, define $F(x)$ as
+    the first intersection point between the half-line $[x, f(x))$ and
+    $\sphere(0, 1)$. 
+    
+    Denote the inclusion $i: \sphere(0, 1) \to \B(0, 1)$. We
+    have that $F \circ i: \sphere(0, 1) \to \sphere(0, 1)$ is the identity. By
+    functoriality of homology, we obtain, for all $i \ge 0$, the commutative
+    diagrams. 
+
+    \begin{figure}[H]
+        \begin{center}
+            \begin{tikzpicture}
+                \node at (0,0) (s1) {$\sphere(0,1)$};
+                \node[right =1cm of s1]  (b1){$\bar{\B}(0,1)$};
+                \node[right =1cm of b1]  (s2){$\sphere(0,1)$};
+                \draw[->,>=stealth] (s1) --node[above]{$i$} (b1);
+                \draw[->,>=stealth] (b1) --node[above]{$F$} (s2);
+                \draw[->,>=stealth] (s1) edge[bend right=30]node[below]{$id$}
+                (s2);
+                
+                \node at (7,0) (hs1) {$H_i(\sphere(0,1))$};
+                \node[right =1cm of hs1]  (hb1){$H_i(\bar{\B})(0,1)$};
+                \node[right =1cm of hb1]  (hs2){$H_i(\sphere(0,1))$};
+                \draw[->,>=stealth] (hs1) --node[above]{$i_*$} (hb1);
+                \draw[->,>=stealth] (hb1) --node[above]{$F_*$} (hs2);
+                \draw[->,>=stealth] (hs1) edge[bend
+                right=30]node[below]{($id_*$)} (hs2);
+            \end{tikzpicture}            
+        \end{center}
+    \end{figure}
+
+But choosing $i = n - 1$, we have $H_i(\sphere(0, 1)) \simeq (\Z/2\Z),
+H_i(\bar{\B}(0, 1)) \simeq (0)$ and the following diagram cannot commute:
+
+\begin{figure}[H]
+    \begin{center}
+        \begin{tikzpicture}
+            \node at (0,0) (s1) {($\Z/2\Z$)};
+            \node[right =1cm of s1]  (b1){$0$};
+            \node[right =1cm of b1]  (s2){($\Z/2\Z$)};
+            \draw[->,>=stealth] (s1) -- (b1);
+            \draw[->,>=stealth] (b1) -- (s2);
+            \draw[->,>=stealth] (s1) edge[bend right=30]node[below]{$id$}
+            (s2);
+        \end{tikzpicture}            
+    \end{center}
+\end{figure}
+
+\end{proof}
+
+\noindent\linia

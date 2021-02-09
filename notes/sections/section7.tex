@@ -28,7 +28,7 @@
     $med(X) \subset \R^n$ which consists of points $y \in \R^n$ that admit at
     least two projections on $X$:
     $$
-    med(X) = \{y \in \R^n, \exists x, x' \in X, x \neq x', ||y - x|| = ||y - x'|| = dist(y, X)
+    med(X) = \{y \in \R^n, \exists x, x' \in X, x \neq x', ||y - x|| = ||y - x'|| = dist(y, X)\}
     .$$
 \end{definition}
 
@@ -157,23 +157,30 @@ Let $t \ge 0$ and denote $dist$ by $d$.
     w + (1 - \alpha)y$ such that, for some $\alpha \in [0,1]$, $t = ||\alpha y
     + (1-\alpha)y - y|| = \alpha\beta$, that is, $\alpha = t/\beta < 1$. So we
     will have $||w - \alpha w - (1 - \alpha)y|| = (1 - \alpha)\beta = \beta -
-    t$. It implies $d(w,Y^t) \le d(w,Y) - t$. After we will se the restriction
-    over the domain of $w$ is not so restrictive. 
+    t$. It implies $d(w,Y^t) \le d(w,Y) - t$. After we will see the restriction
+    over the domain of $w$ is not restrictive. 
 
     \item  $\sup_{w \in X^t} d(w, Y) \le \sup_{x \in X} d(x,Y) + t$ 
     
     If $w \in X^t$, there exists $x \in X$ such that $||w - x|| \le t$.
     So $d(w, Y) \le d(x,Y) + t \le \sup_{x \in X} d(x,Y) + t$. It values for
-    all $w$, then $\sup_{w \in X^t} d(w, Y) \le \sup_{x \in X} d(x,Y) + t$.
+    all $w$, then $\sup_{w \in X^t} d(w, Y) \le \sup_{x \in X} d(x,Y) + t$. 
 
-    \item $\forall w \in X^t, d(w, Y^t) \le \sup_{w \in X^t} d(w, Y) - t$
+    \item $\sup_{w \in X^t} d(w, Y^t) \le \sup_{x \in X} d(x, Y)$. 
     
-    For every $w \in X^t/Y^t, d(w, Y^t) \le \sup_{w \in X^t} d(w, Y) -
-    t$. If $w \in Y^t \cap X^t, d(w,Y^t) = 0$, so this inequality hols for
-    every $w \in X^t$, since $\sup_{w \in X^t} d(w, Y) \ge t$.
-    
-    \item Based on the last two points, $\sup_{w \in X^t} d(w, Y^t) \le \sup_{w \in
-    X^t} d(w, Y) - t \le \sup_{x \in X} d(x, Y)$. 
+    For every $w \in X^t/Y^t$,  we have $d(w, Y^t) \le \sup_{w \in X^t} d(w, Y) -
+    t$, because of what we've proved on point 1. Then 
+    $$\sup_{w \in X^t/Y^t}
+    d(w,Y^t) \le \sup_{w \in X^t} d(w, Y) -
+    t \le \sup_{x \in X} d(x,Y),$$ as argued on point 2. Otherwise suppose $w
+    \in Y^t \cap X^t$, then $d(w,Y^t) = 0$ and the inequality $\sup_{w \in X^t
+    \cap Y^t} d(w, Y^t) = 0 \le \sup_{x \in X} d(x,Y)$ is trivial,
+    because $d$ is a metric. Therefore 
+    $$
+    \sup_{w \in X^t} d(w, Y^t) = \max\{\sup_{w \in X^t
+    \cap Y^t} d(w, Y^t), \sup_{w \in X^t/Y^t}
+    d(w,Y^t)\} \le \sup_{x \in X} d(x,Y)
+    $$
 
     \item We can show similarly that $\sup_{z \in Y^t} d(z, X^t) \le \sup_{y
     \in Y} d(y, X)$. 
@@ -225,7 +232,7 @@ arbitrary, $\sup_{x \in X} d(x,Y) \le t$. The same can be told about $\sup_{y
 \in Y} d(y, X)$. That implies $d_H(X,Y) \le t$. As we took arbitrary $t$,
 applying the infimum we obtain 
 $$d_H(X,Y) \le \inf\{t \ge 0, X \subset Y^t, Y \subset X^t\}.$$
-Suppose the above inequality is restricted ($<$). Then there is $\epsilon > 0$
+Suppose the above inequality is strict ($<$). Then there is $\epsilon > 0$
 such that $d_H(X, Y) + \epsilon$ is still less. Define $s = d_H(X,Y) + \epsilon$. Then $s > d(x,Y), \forall x \in X$ and $s > d(y,
 X), \forall y \in Y$. As $s > d(x,Y)$, there is $y \in Y$ such that $||x - y||
 < s \implies x \in \bar{\B}(x,y) \implies x \in Y^s$. This holds for every $x
@@ -271,8 +278,9 @@ conclude that $d_H(X, Y) = \inf\{t \ge 0, X \subset Y^t, Y \subset X^t\}.$
     $y \in \partial\B(0,1/2), d(y,Z) = 1/2$, the distance to the origin.
     Therefore $reach(\sphere \cap 0) = 1/2$. 
 
-    \item The medial axis is similar to the circle, a unique point in the
-    origin. Then $reach(square) = d(0,square) = 1$. 
+    \item The medial axis of the square is an "X" crossing the diagonals.
+    Because each point of the diagonal forms a smaller square which minimizes
+    distance the adjacency borders (we have two). Then $reach(square) = 0$. 
 
     \item Suppose $a > b$ for simplification, but in the other  case, we only
     need to change the axis, what does not affect the reach. Let $(w,z) \in \R^2$ in the exterior of the ellipse. Suppose we have
@@ -306,14 +314,13 @@ conclude that $d_H(X, Y) = \inf\{t \ge 0, X \subset Y^t, Y \subset X^t\}.$
     minimum and, therefore, there are two projections. Denote $E$ to refer the ellipse. We then have that $med(E) =
     (-s,s)$
     such that, if $x > s$, $f(x)$ is minimized at $a$ and $if x < -s$, at
-    $-a$. Para encontrar $s$, devemos calcular $f(\frac{t}{1 - b^2/a^2})$ e
-    comparar com $(a - t)^2$. Assim 
+    $-a$. In order to find $s$, we must calculate $f(\frac{t}{1 - b^2/a^2})$
+    and compare with $(a - t)^2$. Then 
     $$
     \left(\frac{a^2t}{a^2 - b^2} - t\right)^2 + b^2 - b^2a^2\frac{t^2}{(a^2 - b^2)^2} = t^2b^2\left(b^2 - \frac{a^2}{(a^2 - b^2)^2}\right) + b^2 > (a - t)^2
     $$
-    Solving this inequality we find $s$ and, then, the reach will be the
-    distance $(a - s)^2$. 
-
+    Solving this inequality we find $s = \sqrt{a^2 - b^2}$ and, then, the reach will be the
+    distance $a - s$. 
 
 \end{enumerate}
 
