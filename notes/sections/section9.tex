@@ -26,7 +26,7 @@
 \begin{definition}
     Let $i \ge 0$, $t_0 \ge 0$ and consider a cycle $c \in
     H_i(Cech^{t_0}(X))$. Its death time is
-    $$\sup_\{t \ge t_0, (i^t_{t_0}) (c) \neq 0\}$$
+    $$\sup\{t \ge t_0, (i^t_{t_0}) (c) \neq 0\}$$
     and its birth time is
     $$\inf\{t \ge t0, (i^{t_0}_t)^{-1}(\{c\}) \neq \emptyset\}$$
 
@@ -46,6 +46,75 @@
         $v_s^t \circ v_r^s = v_r^t$
     \end{enumerate}
 When the context is clear, we may denote $\mathbb{V}$ instead of $(\mathbb{V}, \mathbbm{v})$. 
+\end{definition}
+
+\begin{definition}
+    An isomorphism between two persistence modules $\mathbb{V}$ and
+    $\mathbb{W}$ is a family of isomorphisms of vector spaces $\phi = (\phi_t:
+    V^t \to W^t)_{t\in \R^+}$ such that the following diagram commutes for
+    every $s \le t \in \R^+$.
+    
+    \begin{figure}[H]
+        \begin{center}
+            \begin{tikzpicture}
+                \node at (0,0) (vs) {$V^s$};
+                \node[right =1cm of vs]  (vt){$V^t$};
+                \node[below =1cm of vs]  (ws){$W^s$};
+                \node[below =1cm of vt]  (wt){$W^t$};
+                \draw[->,>=stealth] (vs) --node[above]{$v^t_s$} (vt);
+                \draw[->,>=stealth] (vs) --node[left]{$\phi_s$} (ws);
+                \draw[->,>=stealth] (vt) --node[right]{$\phi_t$} (wt);
+                \draw[->,>=stealth] (ws) --node[below]{$w^t_s$} (wt);
+            \end{tikzpicture}            
+        \end{center}
+    \end{figure} 
+\end{definition}
+
+\begin{definition}
+    Let $(\mathbb{V}, \mathbbm{v})$ and $(\mathbb{W}, \mathbbm{w})$ be two
+    persistence modules. Their sum is the persistence module $V \oplus W$
+    defined with the vector spaces $(V \oplus W)^t = V^t \oplus W^t$ and
+    the linear maps
+    $$(v \oplus w)^t_s : (x,y) \in (V \oplus W)^s \mapsto (v_s^t(x), w_s^t(y))
+    \in (V \oplus W)^t.$$
+    A persistence module $\mathbb{U}$ is {\it indecomposable} if for every
+    pair of persistence modules $\mathbb{V}$ and $\mathbb{W}$ such that
+    $\mathbb{U}$ is isomorphic to the sum $\mathbb{V} \oplus \mathbb{W}$, then
+    one of the summand has to be a trivial persistence module, that is, equal
+    to zero for every $t \in \R^+$. Otherwise, $\mathbb{U}$ is said
+    decomposable.
+\end{definition}
+
+\begin{definition}
+    Let $I \subset \R^+$ be an interval. Intervals have the form $[a, b]$,
+    $(a, b]$, $[a, b)$ or $(a, b)$, with $a, b \in \R^+$ such that $a \le b$,
+    and potentially $b = +\infty$. The interval module associated to $I$ is
+    the persistence module $\mathbb{B}[I]$ with vector spaces
+    $\mathbb{B}^t[I]$ and linear maps $v^t_s: \mathbb{B}^s[I] \to
+    \mathbb{B}^t[I]$ defined as 
+    $$
+    \mathbb{B}^t[I] = \begin{cases}
+        \Z/2\Z &\text{if } t \in I, \\
+        0 &\text{otherwise}
+    \end{cases} \text{ and } 
+    v_s^t = \begin{cases}
+        id &\text{if }s,t \in I \\
+        0 &\text{otherwise}
+    \end{cases}
+    $$
+\end{definition}
+
+\begin{definition}
+    A persistence module $\mathbb{V}$ decomposes into interval module if there
+    exists a set $\{\mathbb{B}_i, i \in I\}$ of interval modules such that
+    $\mathbb{V}$ is isomorphic to the sum $\bigoplus_{i \in I} \mathbb{B}_i$;.
+    In other words, there exists a multiset $\mathcal{I}$ of intervals of $T$
+    such that
+    $$\mathbb{V} = \bigoplus_{I\in \mathcal{I}} \mathbb{B}[I].$$
+    Multiset means that $\mathcal{I}$ may contain several copies of the same
+    interval $I$. 
+    Such a module is said decomposable into interval modules, or simply
+    decomposable when the context is clear.
 \end{definition}
 
 \subsection{Exercises}
@@ -166,3 +235,100 @@ H_i(\bar{\B}(0, 1)) \simeq (0)$ and the following diagram cannot commute:
 \end{proof}
 
 \noindent\linia
+
+\begin{exercise}
+    Show that the interval modules are indecomposable.
+\end{exercise}
+
+\begin{proof}
+    We prove by contradiction. Let $\mathbb{V}$ and $\mathbb{W}$ two non-trivial persistence modules whose sum is
+    isomorphic to $\mathbb{B}[I]$. 
+\end{proof}
+
+\noindent\linia
+
+\begin{exercise}
+    Let $\mathcal{M}$ be the unit circle of $\R^2$, and $X \subset \R^2$ a
+    finite subset. Denote the Hausdorff distance $\epsilon =
+    d_H(X,\mathcal{M})$. Suppose that $\epsilon$ is small enough. Let
+    $\mathbb{U}$ denote the persistence module of the 1st homology of the Cech
+    filtration of $X$. Using Theorem 7.3, shows that there exists an interval
+    $I$ on which $\mathbb{U}$ is constant and equal to $\Z/2\Z$. Deduce the existence of a bar in the barcode, and give a lower bound on its persistence. Do the
+    same with Theorem 7.4.
+\end{exercise}
+
+\begin{proof}
+    Let's denote $\mathbb{U} = (H_1(Cech^t(X)))_{t \in \R^+}$. 
+    By theorem 7.3, 
+    if we take $$t \in [4d_H(X,\mathcal{M}),reach(\mathcal{M}) -
+    3d_H(X,\mathcal{M}))$$ we have $X^t \approx \mathcal{M}$. Then, by
+    Proposition 5.14, we have isomorphic homology groups $H_1(X)$ and
+    $H_1(\mathcal{M})$. We know $H_1(circle) = \Z/2\Z$. Then we take $I = [4d_H(X,\mathcal{M}),reach(\mathcal{M}) -
+    3d_H(X,\mathcal{M}))$.
+
+    To use Theorem 7.4, we need the additional supposition that $X \subset
+    \mathcal{M}$ is finite. If we take  $I=[2d_H(X,\mathcal{M}),
+    \sqrt{\frac{3}{5}}reach(\mathcal{M}))$, we have the result.
+\end{proof}
+
+\noindent\linia
+
+\begin{exercise}
+    Compute the barcode of the filtration of Subsection 6.1: 
+    
+    \begin{figure}[H]
+        \includegraphics[width=\textwidth]{../images/exercise-52.png}        
+    \end{figure}
+    \noindent with the
+    following filtration values: $t(\sigma) = 0$ for the vertices, $t(\sigma)
+    = \frac{1}{2}$ for the edges of the square, and $t(\sigma) =
+    \frac{\sqrt{2}}{2}$ for the diagonal edge and the triangle.
+\end{exercise}
+
+First let's build the boundary matrix. 
+
+\begin{center}
+    \begin{tabular}{|c|c|c|c|c|c|c|c|}
+        \hline
+        -             & $\sigma_{1,2,3,4}$ & $\sigma_5$ & $\sigma_6$ & $\sigma_7$ & $\sigma_8$ & $\sigma_9$ & $\sigma_{10}$ \\ \hline
+        $\sigma_1$    & 0                  & 1          & 0          & 0          & 1          & 0          & 0             \\ \hline
+        $\sigma_2$    & 0                  & 1          & 1          & 0          & 0          & 1          & 0             \\ \hline
+        $\sigma_3$    & 0                  & 0          & 1          & 1          & 0          & 0          & 0             \\ \hline
+        $\sigma_4$    & 0                  & 0          & 0          & 1          & 1          & 1          & 0             \\ \hline
+        $\sigma_5$    & 0                  & 0          & 0          & 0          &    0        & 0          & 1             \\ \hline
+        $\sigma_6$    & 0                  & 0          & 0          & 0          & 0          & 0          & 0             \\ \hline
+        $\sigma_7$    & 0                  & 0          & 0          & 0          & 0          & 0          & 0             \\ \hline
+        $\sigma_8$    & 0                  & 0          & 0          & 0          & 0          & 0          & 1             \\ \hline
+        $\sigma_9$    & 0                  & 0          & 0          & 0          & 0          & 0          & 1             \\ \hline
+        $\sigma_{10}$ & 0                  & 0          & 0          & 0          & 0          & 0          & 0             \\ \hline
+    \end{tabular}    
+\end{center}
+
+as already placed in the notes. After apply Gauss reduction we obtain 
+
+\begin{center}
+    \begin{tabular}{|c|c|c|c|c|c|c|c|}
+        \hline
+        -             & $\sigma_{1,2,3,4}$ & $\sigma_5$ & $\sigma_6$ & $\sigma_7$ & $\sigma_8$ & $\sigma_9$ & $\sigma_{10}$ \\ \hline
+        $\sigma_1$    & 0                  & 1          & 0          & 0          & 0          & 0          & 0             \\ \hline
+        $\sigma_2$    & 0                  & 1          & 1          & 0          & 0          & 0          & 0             \\ \hline
+        $\sigma_3$    & 0                  & 0          & 1          & 1          & 0          & 0          & 0             \\ \hline
+        $\sigma_4$    & 0                  & 0          & 0          & 1          & 0          & 0          & 0             \\ \hline
+        $\sigma_5$    & 0                  & 0          & 0          & 0          & 0          & 0          & 1             \\ \hline
+        $\sigma_6$    & 0                  & 0          & 0          & 0          & 0          & 0          & 0             \\ \hline
+        $\sigma_7$    & 0                  & 0          & 0          & 0          & 0          & 0          & 0             \\ \hline
+        $\sigma_8$    & 0                  & 0          & 0          & 0          & 0          & 0          & 1             \\ \hline
+        $\sigma_9$    & 0                  & 0          & 0          & 0          & 0          & 0          & 1             \\ \hline
+        $\sigma_{10}$ & 0                  & 0          & 0          & 0          & 0          & 0          & 0             \\ \hline
+        \end{tabular}
+\end{center}
+
+Consider the pairs $(\sigma^{\delta(j)}, \sigma^j)$. We do not have $\delta(j)
+= 1$, then $(+\infty, \sigma^1)$ is pair. Since $\delta(5) = 2$, $(\sigma^2,
+\sigma^5)$ is another pair. Continuing this reasoning we obtain the pairs 
+$$(\sigma^3, \sigma^6), (\sigma^4, \sigma^7), (\sigma^8, + \infty), (\sigma^9,
+\sigma^{10}).$$  
+
+We conclude the barcodes will be 
+
+$$\mathcal{I} = \{(0, 1/2), (0, 1/2), (0, 1/2)\}$$
