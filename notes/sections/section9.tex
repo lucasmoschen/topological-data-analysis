@@ -241,8 +241,52 @@ H_i(\bar{\B}(0, 1)) \simeq (0)$ and the following diagram cannot commute:
 \end{exercise}
 
 \begin{proof}
-    We prove by contradiction. Let $\mathbb{V}$ and $\mathbb{W}$ two non-trivial persistence modules whose sum is
-    isomorphic to $\mathbb{B}[I]$. 
+    WLet $\mathbb{V}$ and $\mathbb{W}$ two persistence modules whose sum is isomorphic to $\mathbb{B}[I]$. Then there is $\phi = (\phi^t)_{t \in
+    \R^+}$ such that $\mathbb{B}^t[I] \overset{\phi^t}{\to} (V \oplus W)^t$ are
+    isomorphic. If $t \not \in I$, We have that $\mathbb{B}^t[I] = 0$ is
+    isomorphic to  $(V \oplus W)^t$, what implies $(V \oplus W)^t = (0,0)$ and
+    we are done. Otherwise, if $t \in I$, we have $(V \oplus W)^t$ and
+    $\Z/2\Z$ are isomorphic. It's clear that $dim(\Z/2\Z) = 1$, because the
+    bases only need one element. We claim that $dim((V \oplus W)^t) = 1$. We
+    already know $\{\phi^t(1 + \Z)\}$ is a set of independent sets of $(V
+    \oplus W)^t$ and we shall prove it spans the space. Take $(v,w) \in (V
+    \oplus W)^t$. Then, for some $e \in \Z/2\Z$,
+    $$
+    (v,w) = \phi^t(e) = \phi^t((1 + \Z)\alpha) = \alpha \phi^t(1 + \Z).
+    $$
+    Therefore $1 = dim((V + W)^t) = dim(V^t) + dim(W^t) \implies dim(V^t) = 0$
+    xor $dim(W^t) = 0$, that is, $V^t = 0$ xor $W^t = 0$. In special we have for
+    all $t$, we have $V^t = 0$ or $W^t = 0$.  Suppose $V^t \neq 0$ and $W^s
+    \neq 0$, for some $t,s \in \R^+$. We already proved that if $t \not \in
+    I$, then $V^t = 0$ and if $s \not \in I$, then $W^s = 0$, so we don't need
+    to consider these cases. 
+
+    We know $W^t = 0$ and $V^s = 0$ by what we've proved in the first
+    paragraph. By the commutative property and supposing $s \le t$ with no
+    loss of generality, 
+
+    \begin{figure}[H]
+        \begin{center}
+            \begin{tikzpicture}
+                \node at (0,0) (z) {$\Z/2\Z$};
+                \node at (-2,-2)  (vwt){$(V \oplus W)^t$};
+                \node at (2,-2)  (vws){$(V \oplus W)^s$};
+
+                \draw[->,>=stealth] (z) --node[left]{$\phi^t$} (vwt);
+                \draw[->,>=stealth] (z) --node[right]{$\phi_s$} (vws);
+                \draw[->,>=stealth] (vws) --node[below]{$(v \oplus w)_s^t$} (vwt);
+            \end{tikzpicture}            
+        \end{center}
+    \end{figure} 
+    Therefore,
+    $$
+    \phi^t(1 + \Z) = (v,0) \text{ and } \phi^s(1 + \Z) = (0,w), \text{ then } v_s^t(0) = v, w_s^t(w) = 0 
+    $$
+    Alternatively 
+    $$
+    \phi^t(0 + \Z) = (0,0) \text{ and } \phi^s(0 + \Z) = (0, 0), \text{ then } v_s^t(0) = 0 
+    $$
+    This is clearly a contradiction. 
 \end{proof}
 
 \noindent\linia
