@@ -2,7 +2,7 @@
 
 Repository with information about the course Topological Data Analysis with Persistent Homology. 
 
-Professor [Rapha¨el Tinarrage](https://raphaeltinarrage.github.io/)
+Professor [Raphaël Tinarrage](https://raphaeltinarrage.github.io/)
 
 Course website: [https://raphaeltinarrage.github.io/EMAp.html](https://raphaeltinarrage.github.io/EMAp.html)
 
@@ -19,6 +19,7 @@ Exercises and main definitions: [notes](https://lucasmoschen.github.io/files/dis
   - [Tutorials](#tutorials)
     - [Tutorial 1](#tutorial-1)
     - [Tutorial 2](#tutorial-2)
+    - [Tutorial 3](#tutorial-3)
 
 Abstract
 ---
@@ -41,7 +42,9 @@ For running this project you'll need:
    [Anaconda](https://docs.conda.io/projects/conda/en/latest/user-guide/install/linux.html),
    [Python](https://docs.python-guide.org/starting/install3/linux/) and
    [JupyterLab](https://jupyter.org/install). 
-3. Create the environment with the same `enviroment.yml`file. [More details](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#creating-an-environment-from-an-environment-yml-file).
+3. Create the environment with the same `environment.yml` file, just using
+   `conda` command. [More
+   details](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#creating-an-environment-from-an-environment-yml-file).
 
 
 After that, enter in the jupyter environment and run the notebooks as you
@@ -60,7 +63,7 @@ We can also represent the torus triangulation.
 
 ![torus](images/torus-triangulation.png)
 
-After these, with the library [GUDHI](https://gudhi.inria.fr/), we can calculate the number of connected componentes and the Euler characteristic. We can see the behaviour of these characteristics in the Erdős–Rényi graph. 
+After these, with the library [GUDHI](https://gudhi.inria.fr/), we can calculate the number of connected componentes and the Euler characteristic. We can see the behavior of these characteristics in the Erdős–Rényi graph. 
 
 ![erdos](images/graph-erdos-n-components.png)
 
@@ -86,3 +89,39 @@ infer the real first Betti number is 2.
 
 We also consideres two interesting datasets: one with images and another with
 proteins. Please see the notebooks for more details. 
+
+### Tutorial 3 
+
+In this tutorial we apply persistent homology. We start building a filtration
+using the `SimplexTree` object and with that we can compute the persistence
+(barcodes) of the simplicial complex. The `Gudhi` library helps plotting the
+persistance barcode and diagram as you can see (this is a simple example
+without noise):
+
+![persistence](images/persistence-barcode-diagram.png)
+
+With this barcode one can infer the Betti numbers of this, in special $\beta_0
+= 1$ and $\beta_1 = 1$ (a circle). 
+
+However the dataset may have noisy and outliers as we have seen in the Betti
+curves.
+
+<img src = "images/circle-noisy.png" width = 250>
+
+However with the Persistence Barcode we still can infere it's a circle!
+
+<img src = "images/persistence-barcode-diagram2.png" width = 600>
+
+We've applied this knowledge to interesting datasets and one of them involved
+a time series of a played note by a flue and a clarinet. We wanted to
+understand if they were topologically different. In order to do that we
+transform the data embedding in a higher dimension considering the points
+being part of the initial sequence, what we call time delay. For example, for
+the clarinet we observed, for a small sample:
+
+The first image is the time series, while the second id its embedding. We
+observe its a circle, what is pretty interesting 
+
+<img src = "images/clarinet.png" width = 600>
+
+For more details, consult the notebook and the notes! 
